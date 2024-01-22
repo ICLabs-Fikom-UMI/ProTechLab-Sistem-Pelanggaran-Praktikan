@@ -5,6 +5,8 @@
 
 ### Deskripsi Aplikasi
 - Mengapa Anda memilih untuk membuat aplikasi ini (silahkan ceritakan alasannya dengan jelas)
+
+
 - Tujuan dari Aplikasi Anda 
 - Teknologi yang digunakan
 
@@ -32,6 +34,4 @@
 
 
 
-Hiraukan saja
-> [!TIP]
-> Pekerjaan yang dikerjakan secara ikhlas atau dikerjakan dari lubuk hati yang paling dalam tidak hanya dituliskan dengan kata-kata tapi aksi nyata dari kata-kata itu. Kalau hanya sekadar kata-kata setiap orang bisa melakukan itu, tapi tidak untuk aksi nyatanya.
+
