@@ -4,7 +4,7 @@
 
 
 ### Deskripsi Aplikasi
-- Mengapa Anda memilih untuk membuat aplikasi ini (silahkan ceritakan alasannya dengan jelas)
+- Mengapa Anda memilih untuk membuat aplikasi ini 
 
 
 - Tujuan dari Aplikasi Anda 
