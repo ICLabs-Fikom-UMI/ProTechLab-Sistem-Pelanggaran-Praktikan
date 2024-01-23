@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-2">
     <img src="<?=BASEURL; ?>/img/logoFikom.png" alt="" width="300px">
 
 <p></p>

@@ -19,8 +19,27 @@ class Pakaian extends Controller {
 
     public function tambah(){
         if($this->model("Pakaian_model")->tambahDataPakaian($_POST) > 0){
+            Flasher::setFlash("berhasil","ditambahkan", "success");
+            header('Location: ' . BASEURL . '/pakaian');
+            exit;
+        } else{
+            Flasher::setFlash("gagal","ditambhakan", "danger");
             header('Location: ' . BASEURL . '/pakaian');
             exit;
         }
     }
+
+    public function hapus($id){
+        if($this->model("Pakaian_model")->hapusDataPakaian($id) > 0){
+            Flasher::setFlash("berhasil","dihapus", "success");
+            header('Location: ' . BASEURL . '/pakaian');
+            exit;
+        } else{
+            Flasher::setFlash("gagal","dihapus", "danger");
+            header('Location: ' . BASEURL . '/pakaian');
+            exit;
+        }
+    }
+
+    
 }

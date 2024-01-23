@@ -31,9 +31,9 @@
    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
      <div class="navbar-nav ms-auto">
        <a class="nav-link active text-white" aria-current="page" href="<?=BASEURL; ?>" style= "margin-right: 30px;" >Beranda</a>
-       <a class="nav-link text-white" href="<?=BASEURL; ?>/about" style= "margin-right: 30px;" >Menu</a>
-       <a class="nav-link text-white" href="<?=BASEURL; ?>/tata-tertib" style= "margin-right: 30px;" >Tata Tertib</a>
-       <a class="nav-link text-white" href="<?=BASEURL; ?>/tentang" style= "margin-right: 30px;">Tentang</a>
+       <a class="nav-link text-white" href="<?=BASEURL; ?>/menu" style= "margin-right: 30px;" >Menu</a>
+       <a class="nav-link text-white" href="<?=BASEURL; ?>/tatib" style= "margin-right: 30px;" >Tata Tertib</a>
+       <a class="nav-link text-white" href="<?=BASEURL; ?>/about" style= "margin-right: 30px;">Tentang</a>
        <a class="nav-link text-white" href="<?=BASEURL; ?>/pakaian" style= "margin-right: 100px;">Pakaian</a>
        <a class="nav-link text-white" href="<?=BASEURL; ?>/login ">Login</a>
      </div>
