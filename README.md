@@ -40,4 +40,4 @@ dan Controller memproses input serta mengelola aliran program.
 ### LINK UI/UX [Click here](https://github.com/nofalabiyyu/UI-UX.git)
 
 > [!CAUTION]
-> PHP VERSION 8.XX
+> PHP VERSION 8.3.2
