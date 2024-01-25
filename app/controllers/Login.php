@@ -1,5 +1,6 @@
 <?php
 
+
 class Login extends Controller {
     public function index() {
         $this->view("login/index");
@@ -22,8 +23,14 @@ class Login extends Controller {
                 $data['error'] = 'Invalid credentials';
                 $this->view("login/index", $data);
             }
-        
-   
+        }
     }
-}
+
+    public function logout() {
+        session_unset();
+        session_destroy();
+
+        header('Location: ' . BASEURL . '/login');
+        exit;
+    }
 }

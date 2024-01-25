@@ -7,11 +7,11 @@
             <!-- menu -->
             <nav class="navbar">
                 <form class="container-fluid d-flex flex-column justify-content-start">
-                    <a class="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#formModal">lapor</a>
+                    <a class="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#formModal"><i class="bi bi-person-plus me-2"></i>lapor</a>
                     <br><br><br>
-                    <a href="<?= BASEURL; ?>/menu/lihat" class="btn btn-outline-success me-2">lihat</a>
+                    <a href="<?= BASEURL; ?>/menu/lihat" class="btn btn-outline-success me-2"><i class="bi bi-eye me-2"></i>lihat</a>
                     <br><br><br>
-                    <button class="btn btn-outline-success me-2" type="button">Tindak Lanjut</button>
+                    <button class="btn btn-outline-success me-2" type="button"><i class="bi bi-search me-2"></i>Tindak</button>
                 </form>
             </nav>
 
@@ -21,7 +21,7 @@
 
         <!-- isi konten -->
         <div class="col py-3 bg-white opacity-75">
-                <h1>SILAHKAN MEMILIH MENU</h1>
+               
         </div>
     </div>
 

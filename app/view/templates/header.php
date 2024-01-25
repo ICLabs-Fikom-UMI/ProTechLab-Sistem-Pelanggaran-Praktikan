@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman <?= $data["judul"]; ?></title>
     <link rel="stylesheet" href="<?=BASEURL; ?>/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 <style>
@@ -49,7 +50,25 @@
        <a class="nav-link text-white" href="<?=BASEURL; ?>/tatib" style= "margin-right: 30px;" >Tata Tertib</a>
        <a class="nav-link text-white" href="<?=BASEURL; ?>/about" style= "margin-right: 30px;">Tentang</a>
        <a class="nav-link text-white" href="<?=BASEURL; ?>/pakaian" style= "margin-right: 100px;">Pakaian</a>
-       <a class="nav-link text-white" href="<?=BASEURL; ?>/login ">Login</a>
+
+       <div class="dropdown">
+          <a class="nav-link text-white dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" aria-expanded="false" data-bs-toggle="dropdown">
+              Log-out
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+              <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-person-circle"></i> My profile</a>
+              </li>
+              <div class="divider dropdown-divider"></div>
+              <li class="d-flex align-items-center">
+                  <a class="dropdown-item" href="<?= BASEURL; ?>/login/logout">
+                  <i class="bi bi-box-arrow-right"></i> Log Out
+                  </a>
+              </li>
+          </ul>
+      </div>
+
+
      </div>
    </div>
  </div>
