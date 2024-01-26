@@ -5,7 +5,7 @@
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">  
 
             <!-- menu -->
-            <nav class="navbar">
+            <nav class="navbar mt-5">
                 <form class="container-fluid d-flex flex-column justify-content-start">
                     <a class="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#formModal"><i class="bi bi-person-plus me-2"></i>lapor</a>
                     <br><br><br>

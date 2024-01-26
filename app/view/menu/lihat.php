@@ -5,7 +5,7 @@
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">  
 
             <!-- menu -->
-            <nav class="navbar">
+            <nav class="navbar mt-5">
                 <form class="container-fluid d-flex flex-column justify-content-start">
                     <a class="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#formModal"><i class="bi bi-person-plus me-2"></i>lapor</a>
                     <br><br><br>
@@ -20,7 +20,11 @@
 
 
         <!-- isi konten -->
-        <div class="col py-3 bg-light text-light opacity-75">
+        <div class="col py-3 bg-light text-light">
+                <div class="mb-3 d-flex align-items-center justify-content-center">
+                <label for="exampleFormControlInput1" class="form-label">nim</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="masukkan nim anda">
+                </div>
         <table class="table">
                     <thead>
                         <tr>

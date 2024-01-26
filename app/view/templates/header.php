@@ -13,6 +13,7 @@
   .navbar-custom {
     background-color: #092635; 
     z-index: 99;
+    height: 90px;
     
   }
 
