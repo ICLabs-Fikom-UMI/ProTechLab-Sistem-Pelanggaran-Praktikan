@@ -20,12 +20,18 @@
 
 
         <!-- isi konten -->
-        <div class="col py-3 bg-light text-light">
-                <div class="mb-3 d-flex align-items-center justify-content-center">
-                <label for="exampleFormControlInput1" class="form-label">nim</label>
+        <div class="col py-3 bg-light ">
+
+                <div class="mb-3 d-flex align-items-center justify-content-center mt-5 col-6">
+                <label for="exampleFormControlInput1" class="form-label">NIM</label>
                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="masukkan nim anda">
                 </div>
-        <table class="table">
+
+                <div class="mb-3 d-flex align-items-center justify-content-center mt-3 col-6">
+                <label for="exampleFormControlInput1" class="form-label">Nama</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="masukkan nim anda">
+                </div>
+        <table class="table mt-5">
                     <thead>
                         <tr>
                         <th scope="col">no</th>

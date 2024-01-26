@@ -20,7 +20,7 @@
 
 
         <!-- isi konten -->
-        <div class="col py-3 bg-white opacity-75">
+        <div class="col py-3 bg-white ">
                
         </div>
     </div>
