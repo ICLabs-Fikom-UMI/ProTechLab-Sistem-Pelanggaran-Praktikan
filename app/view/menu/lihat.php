@@ -37,6 +37,7 @@
                         <th scope="col">no</th>
                         <th scope="col">nama</th>
                         <th scope="col">nim</th>
+                        <!-- <th scope="col">id_frek</th> -->
                         <th scope="col">frekuensi</th>
                         <th scope="col">lab</th>
                         <th scope="col">deskripsi</th>
@@ -51,6 +52,7 @@
                         <th scope="row"><?= $lapor["id"]; ?></th>
                         <td><?= $lapor["nama_praktikan"]; ?></td>
                         <td> <?= $lapor["nim"]; ?></td>
+                        <!-- <td><?= $lapor["id_frek"]; ?></td> -->
                         <td><?= $lapor["frekuensi"]; ?></td>
                         <td><?= $lapor["lab"]; ?></td>
                         <td><?= $lapor["deskripsi"]; ?></td>
@@ -64,7 +66,7 @@
         </div>
     </div>
 
-      <!-- Modal -->
+       <!-- Modal -->
     <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -74,11 +76,6 @@
                 </div>
                 <div class="modal-body ">
 
-                    <form action="<?= BASEURL; ?>/menu/tambah" method="post">
-                    <div class="mb-3">
-                        <label for="asisten" class="form-label">asisten</label>
-                        <input type="text" class="form-control" id="asisten"  name="asisten" >
-                        </div> 
 
                         <div class="mb-3">
                         <label for="nama" class="form-label">nama</label>

@@ -10,6 +10,7 @@ class Menu extends Controller{
 
     public function lihat(){
         $data["judul"] = "Lihat";
+        $data["lapor"]= $this->model("Laporan_model")->getAllLaporan();
         $this->view("templates/header");
         $this->view("menu/lihat" , $data);
         $this->view("templates/footer");
