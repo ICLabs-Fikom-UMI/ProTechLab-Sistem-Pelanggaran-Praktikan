@@ -18,19 +18,21 @@ class Menu extends Controller{
     }
 
     public function tambah() {
-        try {
-            if($this->model("Laporan_model")->tambahDataLaporan($_POST) > 0){
-                Flasher::setFlash("berhasil","ditambahkan", "success");
-                header('Location: ' . BASEURL . '/menu');
-                exit;
-            } else{
-                Flasher::setFlash("gagal","ditambahakan", "danger");
-                header('Location: ' . BASEURL . '/menu');
-                exit;
-            }
-        } catch (\Throwable $th) {
-            echo $th;
-        }
-    }
+        var_dump($_POST);
+    //     try {
+    //         if($this->model("Laporan_model")->tambahDataLaporan($_POST) > 0){
+    //             Flasher::setFlash("berhasil","ditambahkan", "success");
+    //             header('Location: ' . BASEURL . '/menu');
+    //             exit;
+    //         } else{
+    //             Flasher::setFlash("gagal","ditambahakan", "danger");
+    //             header('Location: ' . BASEURL . '/menu');
+    //             exit;
+    //         }
+    //     } catch (\Throwable $th) {
+    //         echo $th;
+    //     }
+    // }
     
+}
 }

@@ -31,6 +31,7 @@
                 <label for="exampleFormControlInput1" class="form-label">Nama</label>
                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="masukkan nim anda">
                 </div>
+
         <table class="table mt-5">
                     <thead>
                         <tr>
@@ -49,7 +50,7 @@
                     <tbody>
                     
                         <tr>
-                        <th scope="row"><?= $lapor["id"]; ?></th>
+                        <th scope="row"><?= $lapor["id_"]; ?></th>
                         <td><?= $lapor["nama_praktikan"]; ?></td>
                         <td> <?= $lapor["nim"]; ?></td>
                         <!-- <td><?= $lapor["id_frek"]; ?></td> -->
@@ -90,8 +91,14 @@
                         </div>   
                         
                         <div class="mb-3">
-                        <label for="frekuensi" class="form-label">frekuensi</label>
-                        <input type="text" class="form-control" id="frekuensi"  name="frekuensi" >
+                            <label for="frekuensi">frekuensi</label>
+                            <select class="form-select" aria-label="Default select example" name="frekuensi">
+                            <option selected>pilih</option>
+                            <option value="1">TI_JARKOM-9</option>
+                            <option value="1">TI_ALGO-1</option>
+                            <option value="1">TI_ALGO-6</option>
+                            
+                            </select>
                         </div>
 
                         <div class="mb-3">
