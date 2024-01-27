@@ -20,10 +20,7 @@ public function __construct(){
 
     public function tambahDataPakaian($data){
         $query = "INSERT INTO pakaian (nama, nrp, email, jurusan) VALUES (:nama, :nrp, :email, :jurusan)";
-    
-    
         $this->db->query($query);
-    
         $this->db->bind('nama', $data["nama"]);
         $this->db->bind('nrp', $data["nrp"]);
         $this->db->bind('email', $data["email"]);

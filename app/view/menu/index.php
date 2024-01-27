@@ -25,26 +25,110 @@
         </div>
     </div>
 
-      <!-- Modal -->
-    <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">
+    
+
+            <!-- Modal -->
+            <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="judul modal" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fs-5" id="judulModal">Tambah Data Pelanggaran</h5>
+                    <h1 class="modal-title fs-5" id="judul modal">Tambah Data Pakaian</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                
+                <div class="modal-body">
+                    
+                    <form action="<?= BASEURL; ?>/menu/tambah" method="post">
+                    <div class="mb-3">
+                        
+                        <!--  coba -->
+                        <div class="mb-3">
+                        <label for="frekuensi">frekuensi</label>
+                        <select class="form-select" aria-label="Default select example" name="frekuensi">
+                            <?php foreach ($data['frekuensi'] as $frekuensi) : ?>
+                                <option value="<?= $frekuensi['id_frek']; ?>">
+                                    <?= $frekuensi['nama_frek']; ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                        <div class="mb-3">
+                        <label for="lab">Lab</label>
+                        <select class="form-select" aria-label="Default select example" name="lab">
+                            <?php foreach ($data['labs'] as $lab) : ?>
+                                <option value="<?= $lab['id_lab']; ?>">
+                                    <?= $lab['nama_lab']; ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    
+
+
+
                 </div>
-                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Lapor</button>
+                    </form>
+                </div>
                 </div>
             </div>
             </div>
-           
-
-
 
 
 </div>
+
+
+<!-- ini tampilan pertama -->
+
+
+<!-- <label for="nama" class="form-label">nama</label>
+                        <input type="text" class="form-control" id="nama"  name="nama" >
+                        </div>    
+
+
+
+                        <div class="mb-3">
+                        <label for="nim" class="form-label">nim</label>
+                        <input type="text" class="form-control" id="nim"  name="nim" >
+                        </div>  
+
+                        
+                        <div class="mb-3">
+                            <label for="frekuensi">frekuensi</label>
+                            <select class="form-select" aria-label="Default select example" name="frekuensi">
+                            <option selected>pilih</option>
+                            <option value="1">TI_JARKOM-9</option>
+                            <option value="1">TI_ALGO-1</option>
+                            <option value="1">TI_ALGO-6</option>
+                            
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="lab">lab</label>
+                            <select class="form-select" aria-label="Default select example" name="lab">
+                            <option selected>pilih</option>
+                            <option value="1">Iot</option>
+                            <option value="2">Start-up</option>
+                            <option value="3">Multimedia</option>
+                            <option value="4">Comnet</option>
+                            <option value="5">Computer Vision</option>
+                            <option value="6">Data Science</option>
+                            <option value="7">Mikro</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="deskripsi" class="form-label">deskripsi</label>
+                            <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                        <label for="tanggal" class="form-label">tanggal</label>
+                        <input type="date" class="form-control" id="tanggal"  name="tanggal" >
+                        </div>   -->
 
 
 
