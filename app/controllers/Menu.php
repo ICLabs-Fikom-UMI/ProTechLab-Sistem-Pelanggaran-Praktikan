@@ -38,5 +38,11 @@ class Menu extends Controller{
             echo $th;
         }
     }
+
+    public function getLab($id_frek) {
+        $lab = $this->model('Laporan_model')->getLabByFrekuensi($id_frek);
+        echo json_encode($lab);
+    }
+    
     
 }

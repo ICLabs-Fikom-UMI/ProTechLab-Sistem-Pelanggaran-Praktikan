@@ -39,7 +39,13 @@
                     
                     <form action="<?= BASEURL; ?>/menu/tambah" method="post">
                     <div class="mb-3">
-                        
+
+                     <script>
+                    document.querySelector('select[name="frekuensi"]').addEventListener('change', function() {
+                        // Kode untuk mengambil lab berdasarkan frekuensi yang dipilih
+                    });
+                    </script>
+
                         <!--  coba -->
                         <div class="mb-3">
                         <label for="frekuensi">frekuensi</label>
@@ -55,8 +61,10 @@
                         <div class="mb-3">
                         <label for="lab">Lab</label>
                         <select class="form-select" aria-label="Default select example" name="lab">
+                            
                             <?php foreach ($data['labs'] as $lab) : ?>
                                 <option value="<?= $lab['id_lab']; ?>">
+                                
                                     <?= $lab['nama_lab']; ?>
                                 </option>
                             <?php endforeach; ?>

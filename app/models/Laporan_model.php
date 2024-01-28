@@ -61,6 +61,12 @@ class Laporan_model{
         return $this->db->rowCount();
     }
     
+    public function getLabByFrekuensi($id_frek) {
+        $this->db->query("SELECT * FROM mst_lab WHERE id_lab = (SELECT id_lab FROM trx_frekuensi WHERE id_frek = :id_frek)");
+        $this->db->bind('id_frek', $id_frek);
+        return $this->db->single();
+    }
+    
     
     // Contoh model
  
