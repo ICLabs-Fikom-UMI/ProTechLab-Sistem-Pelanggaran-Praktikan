@@ -16,7 +16,7 @@ class Laporan_model{
     }
 
     public function getFrekuensi() {
-        $this->db->query("SELECT * FROM trx_frekuensi ORDER BY nama_frek");
+        $this->db->query("SELECT trx_frekuensi.nama_frek , mst_lab.nama_lab FROM trx_frekuensi INNER JOIN mst_lab ON trx_frekuensi.id_lab = mst_lab.id_lab");
         return $this->db->resultSet();
     }
     
@@ -25,6 +25,18 @@ class Laporan_model{
         $this->db->query("SELECT * FROM ". $this->table);
         return $this->db->resultSet();
     }
+
+    public function getPraktikan($id_frek) {
+        $this->db->query("SELECT mst_user.nama, mst_user.nim, trx_frekuensi.nama_frek
+                          FROM mst_user
+                          INNER JOIN trx_frek_user ON mst_user.id_user = trx_frek_user.id_user
+                          INNER JOIN trx_frekuensi ON trx_frekuensi.id_frek = trx_frek_user.id_frek
+                          WHERE trx_frek_user.id_frek = :id_frek");
+        $this->db->bind('id_frek', $id_frek);
+        return $this->db->resultSet();
+    }
+    
+
 
     public function tambahDataLaporan($data) {
         $query = "
@@ -61,15 +73,12 @@ class Laporan_model{
         return $this->db->rowCount();
     }
     
-    public function getLabByFrekuensi($id_frek) {
-        $this->db->query("SELECT * FROM mst_lab WHERE id_lab = (SELECT id_lab FROM trx_frekuensi WHERE id_frek = :id_frek)");
-        $this->db->bind('id_frek', $id_frek);
-        return $this->db->single();
-    }
+    
+
     
     
-    // Contoh model
- 
+    
+  
 
 
 }

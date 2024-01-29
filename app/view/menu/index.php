@@ -1,88 +1,137 @@
-
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark text-light opacity-75">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">  
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
 
-            <!-- menu -->
-            <nav class="navbar mt-5">
-                <form class="container-fluid d-flex flex-column justify-content-start">
-                    <a class="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#formModal"><i class="bi bi-person-plus me-2"></i>lapor</a>
-                    <br><br><br>
-                    <a href="<?= BASEURL; ?>/menu/lihat" class="btn btn-outline-success me-2"><i class="bi bi-eye me-2"></i>lihat</a>
-                    <br><br><br>
-                    <button class="btn btn-outline-success me-2" type="button"><i class="bi bi-search me-2"></i>Tindak</button>
-                </form>
-            </nav>
+                <!-- menu -->
+                <nav class="navbar mt-5">
+                    <form class="container-fluid d-flex flex-column justify-content-start">
+                        <button class="btn btn-outline-success me-2" type="button"><i
+                                class="bi bi-search me-2"></i>Tindak</button>
+                        <br><br><br>
+                        <a class="btn btn-outline-success me-2"><i class="bi bi-eye me-2"></i>lihat</a>
+                        <br><br><br>
+
+                    </form>
+                </nav>
 
             </div>
         </div>
 
 
         <!-- isi konten -->
-        <div class="col py-3 bg-white ">
-               
+        <div class="col py-3 bg-light ">
+
+            <a class="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#formModal"><i
+                    class="bi bi-person-plus me-2"></i>lapor</a>
+
+            <table class="table mt-5">
+                <thead>
+                    <tr>
+                        <th scope="col">no</th>
+                        <th scope="col">nama</th>
+                        <th scope="col">nim</th>
+                        <!-- <th scope="col">id_frek</th> -->
+                        <th scope="col">frekuensi</th>
+                        <th scope="col">lab</th>
+                        <th scope="col">deskripsi</th>
+                        <th scope="col">Tanggal Pelaporan</th>
+
+                    </tr>
+                </thead>
+                <?php foreach ($data["lapor"] as $lapor): ?>
+                    <tbody>
+
+                        <tr>
+                            <th scope="row">
+                                <?= $lapor["id_"]; ?>
+                            </th>
+                            <td>
+                                <?= $lapor["nama_praktikan"]; ?>
+                            </td>
+                            <td>
+                                <?= $lapor["nim"]; ?>
+                            </td>
+                            <!-- <td><?= $lapor["id_frek"]; ?></td> -->
+                            <td>
+                                <?= $lapor["frekuensi"]; ?>
+                            </td>
+                            <td>
+                                <?= $lapor["lab"]; ?>
+                            </td>
+                            <td>
+                                <?= $lapor["deskripsi"]; ?>
+                            </td>
+                            <td>
+                                <?= $lapor["tanggal"]; ?>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                <?php endforeach; ?>
+
+            </table>
         </div>
     </div>
+    <div class="col py-3 bg-white ">
 
-    
+    </div>
+</div>
 
-            <!-- Modal -->
-            <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="judul modal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="judul modal">Tambah Data Pakaian</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    
-                    <form action="<?= BASEURL; ?>/menu/tambah" method="post">
+
+
+<!-- Modal -->
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="judul modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="judul modal">Tambah Data </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form action="<?= BASEURL; ?>/menu/lapor" method="post">
                     <div class="mb-3">
 
-                     <script>
-                    document.querySelector('select[name="frekuensi"]').addEventListener('change', function() {
-                        // Kode untuk mengambil lab berdasarkan frekuensi yang dipilih
-                    });
-                    </script>
 
                         <!--  coba -->
                         <div class="mb-3">
-                        <label for="frekuensi">frekuensi</label>
-                        <select class="form-select" aria-label="Default select example" name="frekuensi">
-                            <?php foreach ($data['frekuensi'] as $frekuensi) : ?>
-                                <option value="<?= $frekuensi['id_frek']; ?>">
-                                    <?= $frekuensi['nama_frek']; ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
+                            <label for="frekuensi">frekuensi</label>
+                            <select class="form-select" aria-label="Default select example" name="frekuensi">
+                                <?php foreach ($data['frekuensi'] as $frekuensi): ?>
+                                    <option value="<?= $frekuensi['id_frek']; ?>">
+                                        <?= $frekuensi['nama_frek'] . ' - ' . $frekuensi['nama_lab']; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
 
                         <div class="mb-3">
-                        <label for="lab">Lab</label>
-                        <select class="form-select" aria-label="Default select example" name="lab">
-                            
-                            <?php foreach ($data['labs'] as $lab) : ?>
-                                <option value="<?= $lab['id_lab']; ?>">
-                                
-                                    <?= $lab['nama_lab']; ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
+                            <label for="nama">nama praktikan</label>
+                            <select class="form-select" aria-label="Default select example" name="nama" id="namaSelect">
+
+                                <?php foreach ($data['praktikan'] as $praktikan): ?>
+                                    <?= $praktikan['nama']; ?> -
+                                    <?= $praktikan['nim']; ?> -
+                                    <?= $praktikan['nama_frek']; ?>
+                                <?php endforeach; ?>
+
+                            </select>
+                        </div>
+
+
+
+
                     </div>
-                    
-
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger">Lapor</button>
-                    </form>
-                </div>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Lapor</button>
+                </form>
             </div>
-            </div>
+        </div>
+    </div>
+</div>
 
 
 </div>
@@ -137,16 +186,3 @@
                         <label for="tanggal" class="form-label">tanggal</label>
                         <input type="date" class="form-control" id="tanggal"  name="tanggal" >
                         </div>   -->
-
-
-
- 
-     
-           
-
-          
-           
-
-
-
-
