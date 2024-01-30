@@ -9,7 +9,7 @@ class Menu extends Controller
             $laporanModel = $this->model('Laporan_model');
             $data['frekuensi'] = $laporanModel->getFrekuensi();
             $data["lapor"] = $this->model("Laporan_model")->getAllLaporan();
-            $data["praktikan"] = 
+            $data["praktikan"] = $laporanModel->getPraktikan();
             $this->view("templates/header");
             $this->view("menu/index", $data);
             $this->view("templates/footer");
@@ -20,16 +20,29 @@ class Menu extends Controller
 
     
 
+    public function tindak(){
+        $data["judul"] = "lapor";
+        $laporanModel = $this->model('Laporan_model');
+        $data['frekuensi'] = $laporanModel->getFrekuensi();
+        $data["lapor"] = $this->model("Laporan_model")->getTindak();
+        $data["praktikan"] = $laporanModel->getPraktikan();
+        $data["status"] = $laporanModel->getStatus();
+        $this->view("templates/header");
+        $this->view("menu/tindak", $data);
+        $this->view("templates/footer");
+    }
+
+    
+
     public function lihat()
     {
         $data["judul"] = "Lihat";
         $data["lapor"] = $this->model("Laporan_model")->getAllLaporan();
         $this->view("templates/header");
-        $this->view("menu/lihat", $data);
+        $this->view("menu/index", $data);
         $this->view("templates/footer");
 
     }
-
 
 
     public function tambah()

@@ -22,7 +22,10 @@
 
 
         <!-- isi konten -->
+
         <div class="col py-3 bg-light ">
+            <h1>Daftar Tindak Lanjut</h1>
+            <br><br>
 
             <a class="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#formModal"><i
                     class="bi bi-person-plus me-2"></i>lapor</a>
@@ -38,6 +41,7 @@
                         <th scope="col">lab</th>
                         <th scope="col">deskripsi</th>
                         <th scope="col">Tanggal Pelaporan</th>
+                        <th scope="col">Status </th>
 
                     </tr>
                 </thead>
@@ -66,6 +70,15 @@
                             </td>
                             <td>
                                 <?= $lapor["tanggal"]; ?>
+                            </td>
+                            <td>
+                                <select class="form-select form-select-sm" aria-label="Small select example">
+                                <?php foreach ($data['status'] as $status): ?>
+                                    <option value="<?= $status['id_status']; ?>">
+                                        <?= $status['nama_status'] ; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                                </select>
                             </td>
                         </tr>
 
