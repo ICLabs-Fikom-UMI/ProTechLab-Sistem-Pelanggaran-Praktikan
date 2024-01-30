@@ -6,12 +6,13 @@
                 <!-- menu -->
                 <nav class="navbar mt-5">
                     <form class="container-fluid d-flex flex-column justify-content-start">
-                        <a href="<?= BASEURL; ?>/menu/tindak/" class="btn btn-outline-success me-2" type="button">
+                        <a href="<?= BASEURL; ?>/menu/tindak/" class="btn btn-outline-light me-2" type="button">
                             <i class="bi bi-search me-2"></i>Tindak</button>
                         </a>
                         <br><br><br>
 
-                        <a class="btn btn-outline-success me-2"><i class="bi bi-eye me-2"></i>lihat</a>
+                        <a href="<?= BASEURL; ?>/menu/lihat/" class="btn btn-outline-light me-2"><i
+                                class="bi bi-eye me-2"></i>lihat</a>
                         <br><br><br>
 
                     </form>
@@ -27,7 +28,7 @@
             <h1>Daftar Tindak Lanjut</h1>
             <br><br>
 
-            <a class="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#formModal"><i
+            <a class="btn btn-outline-dark me-2" data-bs-toggle="modal" data-bs-target="#formModal"><i
                     class="bi bi-person-plus me-2"></i>lapor</a>
 
             <table class="table mt-5">
@@ -82,7 +83,7 @@
                                 </select>
                             </td>
                             <td class="d-flex mt-3 justify-content-center">
-                                <i class="fa-solid fa-trash-can fa-2xl" style="color: #0d58d9; margin-right: 10px;"></i>
+                                <i href="<?= BASEURL; ?>/menu/hapus/<?= $lapor["id"];?>"  onclick="return confirm('yakin?');"class="fa-solid fa-trash-can fa-2xl" style="color: #0d58d9; margin-right: 10px;"></i>
                                 <i class="fa-solid fa-pen-to-square fa-2xl" style="color: #63E6BE; margin-right: 10px;"></i>
                                 <br><br>
                             </td>
@@ -141,9 +142,15 @@
                         </div>
 
 
+                        <div class="mb-3">
+                            <label for="deskripsi" class="form-label">deskripsi</label>
+                            <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"></textarea>
+                        </div>
 
-
-
+                        <div class="mb-3">
+                            <label for="tanggal" class="form-label">tanggal</label>
+                            <input type="date" class="form-control" id="tanggal" name="tanggal">
+                        </div>
 
 
                     </div>

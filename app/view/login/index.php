@@ -32,19 +32,18 @@
         }
 
         .login-form {
-            background-color: rgba(255, 255, 255, 0.4);
+            background-color: white;
             border-radius: 15px;
-            margin-left: 10vw;
+            margin: 10vh auto; /* Center the form vertically */
             padding: 6vh 1vw;
             max-width: 23vw;
             position: relative;
             z-index: 1;
         }
 
-
-        .logo {
-            margin-bottom: 20px;
-            text-align: center;
+        .login-form img {
+            width: 70px; /* Adjust the width of the logo */
+            margin-right: 10px; /* Add margin to the right of the logo */
         }
 
         .login-title {
@@ -94,35 +93,30 @@
 
     <!-- Form login -->
     <div class="d-flex vh-100 align-items-center justify-content-center">
-        <div style="width: 60%" class="d-flex align-items-center justify-content-center">
-            <img src="<?= BASEURL; ?>/img/logoFikom.png" alt="" width="500px" style="padding: 10px">
-        </div>
-        <div style="width: 60%; padding: 10px" class=" d-flex align-items-center justify-content-center ">
-            <div class="p-2">
-                <div class="row justify-content-center">
-                    <div class="login-form">
-                        <div class="d-flex align-items-center justify-content-center">
-                            <img src="<?= BASEURL; ?>/img/logo.png" alt="" width="70px" class="mr-2">
-                            <h5 class="ms-2">ProTechLab <br>Observer</h5>
-                        </div>
-                        <br>
-                        <h3 class="login-title">Login</h3>
-                        <p></p>
-                        <form action="<?= BASEURL; ?>/login/authenticate" class="lebar" method="post">
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
-                            </div>
-                            <div class="d-grid gap-2 col-6 mx-auto mt-4 text-center">
-                                <button class="btn btn-outline-info" type="submit" name="login">Login</button>
-                            </div>
-
-                        </form>
+        <div class="p-2">
+            <div class="row justify-content-center">
+                <div class="login-form">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img src="<?= BASEURL; ?>/img/logo.png" alt="" width="70px" class="mr-2">
+                        <h5 class="ms-2">ProTechLab <br>Observer</h5>
                     </div>
+                    <br>
+                    <h3 class="login-title">Login</h3>
+                    <p></p>
+                    <form action="<?= BASEURL; ?>/login/authenticate" class="lebar" method="post">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="d-grid gap-2 col-6 mx-auto mt-4 text-center">
+                            <button class="btn btn-outline-dark" type="submit" name="login">Login</button>
+                        </div>
+
+                    </form>
                 </div>
             </div>
         </div>

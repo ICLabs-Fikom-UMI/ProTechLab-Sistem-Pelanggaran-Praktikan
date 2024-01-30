@@ -39,9 +39,21 @@ class Menu extends Controller
         $data["judul"] = "Lihat";
         $data["lapor"] = $this->model("Laporan_model")->getAllLaporan();
         $this->view("templates/header");
-        $this->view("menu/index", $data);
+        $this->view("menu/lihat", $data);
         $this->view("templates/footer");
 
+    }
+
+    public function cari(){
+        try {
+        $data["judul"] = "Daftar Laporan";
+        $data["lapor"] = $this->model("Laporan_model")->cariDataMahasiswa();
+        $this->view("templates/header");
+        $this->view("menu/lihat", $data);
+        $this->view("templates/footer");
+    } catch (\Throwable $th) {
+        echo $th;
+    }
     }
 
 
@@ -63,6 +75,17 @@ class Menu extends Controller
         }
     }
 
+    public function hapus($id){
+        if($this->model("Laporan_model")->hapusData($id) > 0){
+            Flasher::setFlash("berhasil","dihapus", "success");
+            header('Location: ' . BASEURL . '/menu/tindak');
+            exit;
+        } else{
+            Flasher::setFlash("gagal","dihapus", "danger");
+            header('Location: ' . BASEURL . '/menu/tindak');
+            exit;
+        }
+    }
 
 
 
