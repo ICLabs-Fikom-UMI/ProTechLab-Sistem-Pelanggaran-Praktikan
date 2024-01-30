@@ -23,6 +23,8 @@
 
         <!-- isi konten -->
         <div class="col py-3 bg-light ">
+            <h1>Tampilan Menu</h1>
+            <br><br>
 
             <a class="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#formModal"><i
                     class="bi bi-person-plus me-2"></i>lapor</a>

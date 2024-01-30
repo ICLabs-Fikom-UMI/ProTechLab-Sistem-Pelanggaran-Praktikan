@@ -42,6 +42,7 @@
                         <th scope="col">deskripsi</th>
                         <th scope="col">Tanggal Pelaporan</th>
                         <th scope="col">Status </th>
+                        <th scope="col">Aksi </th>
 
                     </tr>
                 </thead>
@@ -58,7 +59,7 @@
                             <td>
                                 <?= $lapor["nim"]; ?>
                             </td>
-                            <!-- <td><?= $lapor["id_frek"]; ?></td> -->
+                            <?= $lapor["id_frek"]; ?>
                             <td>
                                 <?= $lapor["frekuensi"]; ?>
                             </td>
@@ -73,13 +74,19 @@
                             </td>
                             <td>
                                 <select class="form-select form-select-sm" aria-label="Small select example">
-                                <?php foreach ($data['status'] as $status): ?>
-                                    <option value="<?= $status['id_status']; ?>">
-                                        <?= $status['nama_status'] ; ?>
-                                    </option>
-                                <?php endforeach; ?>
+                                    <?php foreach ($data['status'] as $status): ?>
+                                        <option value="<?= $status['id_status']; ?>">
+                                            <?= $status['nama_status']; ?>
+                                        </option>
+                                    <?php endforeach; ?>
                                 </select>
                             </td>
+                            <td class="d-flex mt-3 justify-content-center">
+                                <i class="fa-solid fa-trash-can fa-2xl" style="color: #0d58d9; margin-right: 10px;"></i>
+                                <i class="fa-solid fa-pen-to-square fa-2xl" style="color: #63E6BE; margin-right: 10px;"></i>
+                                <br><br>
+                            </td>
+
                         </tr>
 
                     </tbody>
