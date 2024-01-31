@@ -60,19 +60,16 @@ class Menu extends Controller
 
 
 
-    public function hapus($id)
-    {
-        try {
-            if ($this->model("Laporan_model")->hapusData($id) > 0) {
-                Flasher::setFlash("berhasil", "dihapus", "success");
-            } else {
-                Flasher::setFlash("gagal", "dihapus", "danger");
-            }
-        } catch (\Throwable $th) {
-            echo $th;
+    public function hapus($id){
+        if($this->model("Pakaian_model")->hapusData($id) > 0){
+            Flasher::setFlash("berhasil","dihapus", "success");
+            header('Location: ' . BASEURL . 'menu/tindak');
+            exit;
+        } else{
+            Flasher::setFlash("gagal","dihapus", "danger");
+            header('Location: ' . BASEURL . 'menu/tindak');
+            exit;
         }
-        header('Location: ' . BASEURL . '/menu/tindak');
-        exit;
     }
 
 

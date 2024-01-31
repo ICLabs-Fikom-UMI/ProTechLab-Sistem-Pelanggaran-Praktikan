@@ -17,10 +17,12 @@ class Login extends Controller {
             $authenticated = $model->authenticateUser($username, $password);
 
             if ($authenticated) {
+                Flasher::setFlash("berhasil","log-in", "success");
                 header('Location: ' . BASEURL . '/home/index');
                 exit();
             } else {
                 $data['error'] = 'Invalid credentials';
+                Flasher::setFlash("gagal","masuk", "danger");
                 $this->view("login/index", $data);
             }
         }

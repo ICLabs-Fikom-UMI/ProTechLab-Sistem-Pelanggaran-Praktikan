@@ -6,4 +6,6 @@
         <img src="<?=BASEURL; ?>/img/tatib2.png" alt="" width="500px">
     </div>
 
+  
+
 </div>
