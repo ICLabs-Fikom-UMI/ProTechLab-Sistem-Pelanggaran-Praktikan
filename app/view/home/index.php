@@ -3,7 +3,7 @@
 
 
   
-  </div>
+  
   <p></p>
   <div class="row">
     <div class="col-sm-3">
@@ -11,7 +11,7 @@
         <div class="card-body">
           <h5 class="card-title">Total Pelanggaran</h5>
           <h6 class="card-subtitle mb-2 text-body-secondary">peringatan</h6>
-          <p class="card-text" style="font-size: 30px;">40</p>
+          <p class="card-text" style="font-size: 30px;"><?php echo $data["data"]; ?></p>
         </div>
       </div>
     </div>

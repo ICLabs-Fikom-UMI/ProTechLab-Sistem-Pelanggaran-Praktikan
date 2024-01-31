@@ -135,6 +135,10 @@ class Laporan_model
         return $this->db->rowCount();
     }
 
+    
+
+
+
 
 
 }

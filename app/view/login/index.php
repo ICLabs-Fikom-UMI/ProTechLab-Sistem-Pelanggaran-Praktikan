@@ -107,6 +107,7 @@
                     <h3 class="login-title">Login</h3>
                     <p></p>
                     <form action="<?= BASEURL; ?>/login/authenticate" class="lebar" method="post">
+                    
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" name="username" required>
@@ -120,6 +121,7 @@
                         </div>
 
                     </form>
+                    <a href="<?= BASEURL; ?>/register">regist</a>
                 </div>
             </div>
         </div>
