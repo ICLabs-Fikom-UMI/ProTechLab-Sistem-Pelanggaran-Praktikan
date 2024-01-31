@@ -72,6 +72,7 @@ class Laporan_model
         mst_user.nim AS nim,
         trx_frekuensi.nama_frek AS frekuensi,
         mst_lab.nama_lab AS lab,
+        trx_laporan_pelanggaran.id_laporan AS nomor,
         trx_laporan_pelanggaran.deskripsi AS deskripsi,
         trx_laporan_pelanggaran.tgl_pelaporan AS tanggal
     FROM
@@ -83,7 +84,9 @@ class Laporan_model
     JOIN
         mst_lab ON mst_lab.id_lab = trx_frekuensi.id_lab
     JOIN
-        trx_laporan_pelanggaran ON trx_laporan_pelanggaran.id_frek_user = trx_frek_user.id_frek_user"
+        trx_laporan_pelanggaran ON trx_laporan_pelanggaran.id_frek_user = trx_frek_user.id_frek_user
+    "
+    
         );
         return $this->db->resultSet();
     }
@@ -115,7 +118,7 @@ class Laporan_model
     JOIN
         trx_laporan_pelanggaran ON trx_laporan_pelanggaran.id_frek_user = trx_frek_user.id_frek_user
         WHERE nama LIKE :keyword";
-        
+
         $this->db->query($query);
         $this->db->bind(":keyword", "%$keyword%");
         return $this->db->resultSet();
@@ -123,60 +126,14 @@ class Laporan_model
 
 
 
-
-
-
-    public function tambahDataLaporan($data)
+    public function hapusData($id)
     {
-        $query = "
-            INSERT INTO trx_laporan_pelanggaran (id_user, id_frek_user, tgl_pelaporan, deskripsi, nama_user)
-            SELECT
-                mst_user.id_user,
-                trx_frek_user.id_frek_user,
-                :tanggal,
-                :deskripsi,
-                mst_user.nama AS nama_praktikan
-            FROM
-                mst_user
-            JOIN
-                trx_frek_user ON trx_frek_user.id_user = mst_user.id_user
-            JOIN
-                trx_frekuensi ON trx_frekuensi.id_frek = trx_frek_user.id_frek
-            JOIN
-                mst_lab ON mst_lab.id_lab = trx_frekuensi.id_lab
-            JOIN
-                trx_laporan_pelanggaran ON trx_laporan_pelanggaran.id_frek_user = trx_frek_user.id_frek_user
-            WHERE
-                mst_user.id_user = :id_user"; // Gantilah dengan kondisi yang sesuai
-
+        $query = "DELETE FROM trx_laporan_pelanggaran WHERE id_laporan = :id_laporan";
         $this->db->query($query);
-
-        // Bind deskripsi, tanggal, dan parameter tambahan jika diperlukan
-        $this->db->bind('deskripsi', $data["deskripsi"]);
-        $this->db->bind('tanggal', $data["tanggal"]);
-        $this->db->bind('id_user', $data["id_user"]); // Tambahkan parameter yang sesuai
-
-        // Eksekusi query
+        $this->db->bind("id_laporan", $id);
         $this->db->execute();
-
         return $this->db->rowCount();
     }
-
-    public function hapusData($id){
-        $query = "DELETE FROM trx_laporan_pelanggaran WHERE id = :id";
-        $this->db->query($query);
-        $this->db->bind("id", $id);
-
-
-        $this->db->execute();   
-        return $this->db->rowCount();
-    }
-
-
-   
-
-
-
 
 
 

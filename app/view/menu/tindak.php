@@ -34,7 +34,7 @@
             <table class="table mt-5">
                 <thead>
                     <tr>
-                        <th scope="col">no</th>
+                        <th scope="col"></th>
                         <th scope="col">nama</th>
                         <th scope="col">nim</th>
                         <!-- <th scope="col">id_frek</th> -->
@@ -52,9 +52,11 @@
 
                         <tr>
                             <th scope="row">
-                                <?= $lapor["id_"]; ?>
+                                <!-- <?= $lapor["nomor"]; ?> -->
                             </th>
+
                             <td>
+
                                 <?= $lapor["nama_praktikan"]; ?>
                             </td>
                             <td>
@@ -82,11 +84,21 @@
                                     <?php endforeach; ?>
                                 </select>
                             </td>
+
+
                             <td class="d-flex mt-3 justify-content-center">
-                                <i href="<?= BASEURL; ?>/menu/hapus/<?= $lapor["id"];?>"  onclick="return confirm('yakin?');"class="fa-solid fa-trash-can fa-2xl" style="color: #0d58d9; margin-right: 10px;"></i>
+                                <i href="<?= BASEURL; ?>/menu/hapus/<?= $lapor["nomor"]; ?>"
+                                    class="fa-solid fa-trash fa-2xl mb-3" onclick="return confirm('yakin?');"
+                                    style="margin-right: 10px;"></i>
+
                                 <i class="fa-solid fa-pen-to-square fa-2xl" style="color: #63E6BE; margin-right: 10px;"></i>
                                 <br><br>
                             </td>
+
+
+
+                            <!-- ... Bagian lain dari tampilan Anda ... -->
+
 
                         </tr>
 

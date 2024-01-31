@@ -18,9 +18,10 @@ class Menu extends Controller
         }
     }
 
-    
 
-    public function tindak(){
+
+    public function tindak()
+    {
         $data["judul"] = "lapor";
         $laporanModel = $this->model('Laporan_model');
         $data['frekuensi'] = $laporanModel->getFrekuensi();
@@ -32,7 +33,7 @@ class Menu extends Controller
         $this->view("templates/footer");
     }
 
-    
+
 
     public function lihat()
     {
@@ -44,49 +45,35 @@ class Menu extends Controller
 
     }
 
-    public function cari(){
-        try {
-        $data["judul"] = "Daftar Laporan";
-        $data["lapor"] = $this->model("Laporan_model")->cariDataMahasiswa();
-        $this->view("templates/header");
-        $this->view("menu/lihat", $data);
-        $this->view("templates/footer");
-    } catch (\Throwable $th) {
-        echo $th;
-    }
-    }
-
-
-    public function tambah()
+    public function cari()
     {
-
         try {
-            if ($this->model("Laporan_model")->tambahDataLaporan($_POST) > 0) {
-                Flasher::setFlash("berhasil", "ditambahkan", "success");
-                header('Location: ' . BASEURL . '/menu');
-                exit;
-            } else {
-                Flasher::setFlash("gagal", "ditambahakan", "danger");
-                header('Location: ' . BASEURL . '/menu');
-                exit;
-            }
+            $data["judul"] = "Daftar Laporan";
+            $data["lapor"] = $this->model("Laporan_model")->cariDataMahasiswa();
+            $this->view("templates/header");
+            $this->view("menu/lihat", $data);
+            $this->view("templates/footer");
         } catch (\Throwable $th) {
             echo $th;
         }
     }
 
-    public function hapus($id){
-        if($this->model("Laporan_model")->hapusData($id) > 0){
-            Flasher::setFlash("berhasil","dihapus", "success");
-            header('Location: ' . BASEURL . '/menu/tindak');
-            exit;
-        } else{
-            Flasher::setFlash("gagal","dihapus", "danger");
-            header('Location: ' . BASEURL . '/menu/tindak');
-            exit;
-        }
-    }
 
+
+    public function hapus($id)
+    {
+        try {
+            if ($this->model("Laporan_model")->hapusData($id) > 0) {
+                Flasher::setFlash("berhasil", "dihapus", "success");
+            } else {
+                Flasher::setFlash("gagal", "dihapus", "danger");
+            }
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+        header('Location: ' . BASEURL . '/menu/tindak');
+        exit;
+    }
 
 
 
