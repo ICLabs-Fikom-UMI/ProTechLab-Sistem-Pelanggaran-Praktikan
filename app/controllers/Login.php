@@ -1,13 +1,20 @@
 <?php
 
 
-class Login extends Controller {
-    public function index() {
+class Login extends Controller
+{
+    public function index()
+    {
+        if (isset($_SESSION['id_user'])) {
+            header('Location: ' . BASEURL . '/home/index');
+            exit();
+        }
         $this->view("login/index");
     }
 
 
-    public function authenticate() {
+    public function authenticate()
+    {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
             $username = $_POST['username'];
@@ -17,18 +24,24 @@ class Login extends Controller {
             $authenticated = $model->authenticateUser($username, $password);
 
             if ($authenticated) {
-                Flasher::setFlash("berhasil","log-in", "success");
+                $data = $this->model('UserModel')->getUserByUsername($username);
+                $_SESSION["role"] = $data["role"];
+                $_SESSION["id_user"] = $data["id_user"];
+                $_SESSION["username"] = $data["username"];
+
+
                 header('Location: ' . BASEURL . '/home/index');
                 exit();
             } else {
                 $data['error'] = 'Invalid credentials';
-                Flasher::setFlash("gagal","masuk", "danger");
+
                 $this->view("login/index", $data);
             }
         }
     }
 
-    public function logout() {
+    public function logout()
+    {
         session_unset();
         session_destroy();
 

@@ -27,6 +27,10 @@ class Register extends Controller
     echo $th;
 }
   }
+
+  public function profil(){
+    
+  }
   
 
 }

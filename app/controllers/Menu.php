@@ -18,10 +18,15 @@ class Menu extends Controller
         }
     }
 
+   
 
 
     public function tindak()
     {
+        if ($_SESSION['role'] != 'admin') {
+            header('Location: ' . BASEURL . '/home');
+            exit;
+        }
         $data["judul"] = "lapor";
         $laporanModel = $this->model('Laporan_model');
         $data['frekuensi'] = $laporanModel->getFrekuensi();
@@ -46,17 +51,26 @@ class Menu extends Controller
     }
 
     public function cari()
-    {
-        try {
-            $data["judul"] = "Daftar Laporan";
-            $data["lapor"] = $this->model("Laporan_model")->cariDataMahasiswa();
-            $this->view("templates/header");
-            $this->view("menu/lihat", $data);
-            $this->view("templates/footer");
-        } catch (\Throwable $th) {
-            echo $th;
+{
+    try {
+        $data["judul"] = "Daftar Laporan";
+        $data["lapor"] = $this->model("Laporan_model")->cariDataMahasiswa();
+
+        // Check if the count of data is greater than 3
+        if (count($data["lapor"]) >= 3) {
+            // Set a success flash message
+            Flasher::setFlash("Pelanggaran lebih dari 3", "anda tidak dapat mengikuti praktikum selanjutnya, silahkan bertemu pihak laboratorium untuk penindakan selanjutnya", "danger");
+            
         }
+
+        $this->view("templates/header");
+        $this->view("menu/lihat", $data);
+        $this->view("templates/footer");
+    } catch (\Throwable $th) {
+        echo $th;
     }
+}
+
 
 
 

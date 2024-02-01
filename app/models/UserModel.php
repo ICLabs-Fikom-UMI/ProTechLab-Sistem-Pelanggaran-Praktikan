@@ -18,7 +18,7 @@ class UserModel {
 
         $this->db->execute();
 
-        return $this->db->rowCount() == 1;
+        return $this->db->rowCount();
     }
 
     public function regis($data) {
@@ -37,5 +37,12 @@ class UserModel {
         return $this->db->rowCount();
     }
     
+    public function getUserByUsername($username){
+        $query = "SELECT * FROM ". $this->table . ' WHERE username = :username';
+
+        $this->db->query($query);
+        $this->db->bind("username", $username);
+        return $this->db->single();
+    }
     
 }

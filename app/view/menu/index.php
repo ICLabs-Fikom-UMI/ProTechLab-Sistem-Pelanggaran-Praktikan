@@ -6,9 +6,19 @@
                 <!-- menu -->
                 <nav class="navbar mt-5">
                     <form class="container-fluid d-flex flex-column justify-content-start">
+
+                    <?php if ($_SESSION['role'] == 'asisten'|| $_SESSION['role'] == 'admin') {?> 
+                        <a class="btn btn-outline-light me-2" data-bs-toggle="modal"
+                            data-bs-target="#formModal"><i class="bi bi-person-plus me-2"></i>lapor</a>
+                            <?php }?>
+
+                        <?php if ($_SESSION['role'] == 'admin') {?>    
+                            <br><br><br>
                         <a href="<?= BASEURL; ?>/menu/tindak/" class="btn btn-outline-light me-2" type="button">
                             <i class="bi bi-search me-2"></i>Tindak</button>
                         </a>
+                        <?php }?>
+
                         <br><br><br>
 
                         <a href="<?= BASEURL; ?>/menu/lihat/" class="btn btn-outline-light me-2"><i
@@ -25,57 +35,10 @@
         <!-- isi konten -->
         <div class="col py-3 bg-light ">
             <h1>Tampilan Menu</h1>
+            <h5>silahkan memilih fitur yang ada di sebelah</h5>
             <br><br>
 
-            <a class="btn btn-outline-dark me-2 rounded-4" data-bs-toggle="modal" data-bs-target="#formModal"><i
-                    class="bi bi-person-plus me-2"></i>lapor</a>
 
-            <table class="table mt-5">
-                <thead>
-                    <tr>
-                        <th scope="col">no</th>
-                        <th scope="col">nama</th>
-                        <th scope="col">nim</th>
-                        <!-- <th scope="col">id_frek</th> -->
-                        <th scope="col">frekuensi</th>
-                        <th scope="col">lab</th>
-                        <th scope="col">deskripsi</th>
-                        <th scope="col">Tanggal Pelaporan</th>
-
-                    </tr>
-                </thead>
-                <?php foreach ($data["lapor"] as $lapor): ?>
-                    <tbody>
-
-                        <tr>
-                            <th scope="row">
-                                <?= $lapor["id_"]; ?>
-                            </th>
-                            <td>
-                                <?= $lapor["nama_praktikan"]; ?>
-                            </td>
-                            <td>
-                                <?= $lapor["nim"]; ?>
-                            </td>
-                            <!-- <td><?= $lapor["id_frek"]; ?></td> -->
-                            <td>
-                                <?= $lapor["frekuensi"]; ?>
-                            </td>
-                            <td>
-                                <?= $lapor["lab"]; ?>
-                            </td>
-                            <td>
-                                <?= $lapor["deskripsi"]; ?>
-                            </td>
-                            <td>
-                                <?= $lapor["tanggal"]; ?>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                <?php endforeach; ?>
-
-            </table>
         </div>
     </div>
     <div class="col py-3 bg-white ">
@@ -123,6 +86,7 @@
                             </select>
                         </div>
 
+
                         <div class="mb-3">
                             <label for="deskripsi" class="form-label">deskripsi</label>
                             <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"></textarea>
@@ -132,9 +96,6 @@
                             <label for="tanggal" class="form-label">tanggal</label>
                             <input type="date" class="form-control" id="tanggal" name="tanggal">
                         </div>
-
-
-
 
 
                     </div>

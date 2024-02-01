@@ -4,8 +4,12 @@
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
 
                 <!-- menu -->
+                
                 <nav class="navbar mt-5">
-                    <form class="container-fluid d-flex flex-column justify-content-start">
+                <form class="container-fluid d-flex flex-column justify-content-start">
+                        <a class="btn btn-outline-light me-2" data-bs-toggle="modal"
+                            data-bs-target="#formModal"><i class="bi bi-person-plus me-2"></i>lapor</a>
+                            <br><br><br>
                         <a href="<?= BASEURL; ?>/menu/tindak/" class="btn btn-outline-light me-2" type="button">
                             <i class="bi bi-search me-2"></i>Tindak</button>
                         </a>
@@ -17,6 +21,7 @@
 
                     </form>
                 </nav>
+               
 
             </div>
         </div>
@@ -26,10 +31,23 @@
 
         <div class="col py-3 bg-light ">
             <h1>Daftar Tindak Lanjut</h1>
-            <br><br>
 
-            <a class="btn btn-outline-dark me-2" data-bs-toggle="modal" data-bs-target="#formModal"><i
-                    class="bi bi-person-plus me-2"></i>lapor</a>
+            <div class="row mb-3">
+                <div class="col-lg-6">
+                    <form action="<?= BASEURL; ?>/menu/cari" method="post">
+
+                        <div class="hstack gap-3">
+                            <input type="text" class="form-control" placeholder="cari mahasiswa.." name="keyword"
+                                id="keyword" autocomplete="off">
+                            <button type="button" class="btn btn-secondary">Cari</button>
+                            <div class="vr"></div>
+                            <a href="<?= BASEURL; ?>/menu/lihat/"  class="btn btn-outline-dark">kembali</a>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
 
             <table class="table mt-5">
                 <thead>

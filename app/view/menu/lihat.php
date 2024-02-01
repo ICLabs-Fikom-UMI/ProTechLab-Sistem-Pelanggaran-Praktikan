@@ -6,10 +6,7 @@
                 <!-- menu -->
                 <nav class="navbar mt-5">
                     <form class="container-fluid d-flex flex-column justify-content-start">
-                        <a href="<?= BASEURL; ?>/menu/tindak/" class="btn btn-outline-light me-2" type="button">
-                            <i class="bi bi-search me-2"></i>Tindak</button>
-                        </a>
-                        <br><br><br>
+                       
 
                         <a href="<?= BASEURL; ?>/menu/lihat/" class="btn btn-outline-light me-2"><i
                                 class="bi bi-eye me-2"></i>lihat</a>
@@ -23,29 +20,30 @@
 
 
         <!-- isi konten -->
+
         <div class="col py-3 bg-light ">
+        <div class="row">
+    <div class="col-lg-6">
+      <?php Flasher::flash() ?>
+
+    </div>
+  </div>
             <h1>Tampilan lihat</h1>
             <br><br>
+
+            
 
             <div class="row mb-3">
                 <div class="col-lg-6">
                     <form action="<?= BASEURL; ?>/menu/cari" method="post">
 
-
-                        <div class="input-group ">
+                        <div class="hstack gap-3">
                             <input type="text" class="form-control" placeholder="cari mahasiswa.." name="keyword"
                                 id="keyword" autocomplete="off">
-                            <button class="btn btn-outline-secondary" type="submit" id="tombolCari">Cari</button>
+                            <button type="button" class="btn btn-secondary">Cari</button>
+                            <div class="vr"></div>
+                            <a href="<?= BASEURL; ?>/menu/lihat/"  class="btn btn-outline-dark">kembali</a>
                         </div>
-
-                        <br><br>
-
-                        <a href="<?= BASEURL; ?>/menu/lihat/" class="btn btn-outline-dark me-5">
-                            <i class="fa-solid fa-backward"></i>kembali
-                        </a>
-
-
-
 
 
                     </form>

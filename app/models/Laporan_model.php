@@ -56,8 +56,6 @@ class Laporan_model
         $this->db->query("SELECT mst_user.id_user, mst_user.nama, mst_user.nim FROM mst_user");
         return $this->db->resultSet();
 
-
-
         // $this->db->query("SELECT  mst_user.nama, mst_user.nim FROM trx_frek_user INNER JOIN mst_user ON trx_frek_user.id_user = mst_user.id_user WHERE trx_frek_user.id_frek = :id_frek");
         // $this->db->bind('id_frek', $id_frek);
         // return $this->db->resultSet();
@@ -134,11 +132,6 @@ class Laporan_model
         $this->db->execute();
         return $this->db->rowCount();
     }
-
-    
-
-
-
 
 
 }
