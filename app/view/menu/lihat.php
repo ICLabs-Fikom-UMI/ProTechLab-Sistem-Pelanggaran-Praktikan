@@ -1,3 +1,4 @@
+<?php if ($_SESSION['role'] == 'asisten' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'praktikan') { ?>
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark text-light opacity-75">
@@ -42,9 +43,13 @@
                                 id="keyword" autocomplete="off">
                             <button type="button" class="btn btn-secondary">Cari</button>
                             <div class="vr"></div>
-                            <a href="<?= BASEURL; ?>/menu/lihat/"  class="btn btn-outline-dark">kembali</a>
+                            <a href="<?= BASEURL; ?>/menu/lihat/"  class="btn btn-outline-dark">refresh</a>
+                            <?php if ($_SESSION['role'] == 'asisten'|| $_SESSION['role'] == 'admin') {?> 
+                            <a href="<?= BASEURL; ?>/menu/index/"  class="btn btn-outline-dark">kembali</a>
+                            <?php }?>
                         </div>
-
+                       
+                        
 
                     </form>
                 </div>
@@ -105,6 +110,11 @@
 </div>
 
 </div>
+<?php } else {
+    // Jika role tidak sesuai, redirect ke halaman login
+    header("Location: " . BASEURL . "/login"); // Sesuaikan dengan path login yang sesuai di aplikasi Anda
+    exit();
+}?>
 
 
 <!-- ini tampilan pertama -->

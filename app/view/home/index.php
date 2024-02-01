@@ -1,10 +1,11 @@
+<?php if ($_SESSION['role'] == 'asisten' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'praktikan') { ?>
 <div class="container mt-2">
   <img src="<?= BASEURL; ?>/img/logoFikom.png" alt="" width="300px">
 
 
   
   
-  <p></p>
+  <!-- <p></p>
   <div class="row">
     <div class="col-sm-3">
       <div class="card" style="width: 18rem;">
@@ -36,8 +37,13 @@
         <p class="card-text" style="font-size: 30px;">0</p>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 
 </div>
+<?php } else {
+    // Jika role tidak sesuai, redirect ke halaman login
+    header("Location: " . BASEURL . "/login"); // Sesuaikan dengan path login yang sesuai di aplikasi Anda
+    exit();
+}?>

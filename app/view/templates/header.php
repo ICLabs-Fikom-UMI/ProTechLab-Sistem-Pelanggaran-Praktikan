@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman <?= $data["judul"]; ?></title>
+    
     <link rel="stylesheet" href="<?=BASEURL; ?>/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link
@@ -17,7 +18,7 @@
 
 </head>
 <body>
-  
+<?php if ($_SESSION['role'] == 'asisten' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'praktikan') { ?>
 <style>
   .navbar-custom {
     background-color: #092635; 
@@ -86,7 +87,7 @@
  
 </nav>
 
-
+<?php } ?>
 
 
 

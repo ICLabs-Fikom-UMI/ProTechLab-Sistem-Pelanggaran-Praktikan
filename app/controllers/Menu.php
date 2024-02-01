@@ -18,8 +18,6 @@ class Menu extends Controller
         }
     }
 
-   
-
 
     public function tindak()
     {
@@ -71,19 +69,43 @@ class Menu extends Controller
     }
 }
 
+public function cariTindak()
+{
+    try {
+        $data["judul"] = "Daftar Laporan";
+        $data["lapor"] = $this->model("Laporan_model")->cariDataMahasiswa();
+
+        // Check if the count of data is greater than 3
+        if (count($data["lapor"]) >= 3) {
+            // Set a success flash message
+            Flasher::setFlash("Pelanggaran lebih dari 3", "praktikan sudah tidak dapat mengikuti praktikum selanjutnya", "danger");
+            
+        }
+
+        $this->view("templates/header");
+        $this->view("menu/tindak", $data);
+        $this->view("templates/footer");
+    } catch (\Throwable $th) {
+        echo $th;
+    }
+}
 
 
 
-    public function hapus($id){
-        if($this->model("Pakaian_model")->hapusData($id) > 0){
+    public function hapus($id_laporan){
+        try {
+        if($this->model("Laporan_model")->hapusData($id_laporan) > 0){
             Flasher::setFlash("berhasil","dihapus", "success");
-            header('Location: ' . BASEURL . 'menu/tindak');
+            header('Location: ' . BASEURL . '/menu/tindak/');
             exit;
         } else{
             Flasher::setFlash("gagal","dihapus", "danger");
-            header('Location: ' . BASEURL . 'menu/tindak');
+            header('Location: ' . BASEURL . '/menu/tindak/');
             exit;
         }
+    } catch (\Throwable $th) {
+        echo $th;
+    }
     }
 
 

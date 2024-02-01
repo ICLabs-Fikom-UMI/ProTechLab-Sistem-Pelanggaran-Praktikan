@@ -1,3 +1,4 @@
+<?php if ($_SESSION['role'] == 'asisten' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'praktikan') { ?>
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark text-light opacity-75">
@@ -7,17 +8,17 @@
                 <nav class="navbar mt-5">
                     <form class="container-fluid d-flex flex-column justify-content-start">
 
-                    <?php if ($_SESSION['role'] == 'asisten'|| $_SESSION['role'] == 'admin') {?> 
-                        <a class="btn btn-outline-light me-2" data-bs-toggle="modal"
-                            data-bs-target="#formModal"><i class="bi bi-person-plus me-2"></i>lapor</a>
-                            <?php }?>
+                        <?php if ($_SESSION['role'] == 'asisten' || $_SESSION['role'] == 'admin') { ?>
+                            <a class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#formModal"><i
+                                    class="bi bi-person-plus me-2"></i>lapor</a>
+                        <?php } ?>
 
-                        <?php if ($_SESSION['role'] == 'admin') {?>    
+                        <?php if ($_SESSION['role'] == 'admin') { ?>
                             <br><br><br>
-                        <a href="<?= BASEURL; ?>/menu/tindak/" class="btn btn-outline-light me-2" type="button">
-                            <i class="bi bi-search me-2"></i>Tindak</button>
-                        </a>
-                        <?php }?>
+                            <a href="<?= BASEURL; ?>/menu/tindak/" class="btn btn-outline-light me-2" type="button">
+                                <i class="bi bi-search me-2"></i>Tindak</button>
+                            </a>
+                        <?php } ?>
 
                         <br><br><br>
 
@@ -25,6 +26,7 @@
                                 class="bi bi-eye me-2"></i>lihat</a>
                         <br><br><br>
 
+                
                     </form>
                 </nav>
 
@@ -109,7 +111,14 @@
 </div>
 
 
+
+
 </div>
+<?php } else {
+    // Jika role tidak sesuai, redirect ke halaman login
+    header("Location: " . BASEURL . "/login"); // Sesuaikan dengan path login yang sesuai di aplikasi Anda
+    exit();
+}?>
 
 
 <!-- ini tampilan pertama -->

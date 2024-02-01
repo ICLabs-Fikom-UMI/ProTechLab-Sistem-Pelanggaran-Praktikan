@@ -52,15 +52,12 @@ class Laporan_model
 
     public function getPraktikan()
     {
-
         $this->db->query("SELECT mst_user.id_user, mst_user.nama, mst_user.nim FROM mst_user");
         return $this->db->resultSet();
 
-        // $this->db->query("SELECT  mst_user.nama, mst_user.nim FROM trx_frek_user INNER JOIN mst_user ON trx_frek_user.id_user = mst_user.id_user WHERE trx_frek_user.id_frek = :id_frek");
-        // $this->db->bind('id_frek', $id_frek);
-        // return $this->db->resultSet();
-
     }
+
+    
 
 
     public function getTindak()
@@ -124,12 +121,13 @@ class Laporan_model
 
 
 
-    public function hapusData($id)
-    {
+    public function hapusData($id_laporan){
         $query = "DELETE FROM trx_laporan_pelanggaran WHERE id_laporan = :id_laporan";
         $this->db->query($query);
-        $this->db->bind("id_laporan", $id);
-        $this->db->execute();
+        $this->db->bind("id_laporan", $id_laporan);
+
+
+        $this->db->execute();   
         return $this->db->rowCount();
     }
 
