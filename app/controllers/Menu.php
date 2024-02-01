@@ -10,6 +10,7 @@ class Menu extends Controller
             $data['frekuensi'] = $laporanModel->getFrekuensi();
             $data["lapor"] = $this->model("Laporan_model")->getAllLaporan();
             $data["praktikan"] = $laporanModel->getPraktikan();
+            $data["status"] = $laporanModel->getStatus();
             $this->view("templates/header");
             $this->view("menu/index", $data);
             $this->view("templates/footer");
@@ -73,15 +74,15 @@ public function cariTindak()
 {
     try {
         $data["judul"] = "Daftar Laporan";
+        $laporanModel = $this->model('Laporan_model');
         $data["lapor"] = $this->model("Laporan_model")->cariDataMahasiswa();
 
-        // Check if the count of data is greater than 3
         if (count($data["lapor"]) >= 3) {
-            // Set a success flash message
+           
             Flasher::setFlash("Pelanggaran lebih dari 3", "praktikan sudah tidak dapat mengikuti praktikum selanjutnya", "danger");
-            
-        }
 
+        }
+        $data["status"] = $laporanModel->getStatus();
         $this->view("templates/header");
         $this->view("menu/tindak", $data);
         $this->view("templates/footer");

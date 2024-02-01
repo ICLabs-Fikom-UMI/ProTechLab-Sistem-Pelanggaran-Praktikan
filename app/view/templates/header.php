@@ -69,7 +69,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
               <li>
-                  <a class="dropdown-item" href="#"><i class="bi bi-person-circle"></i> My profile</a>
+                  <a class="dropdown-item" href="<?= BASEURL; ?>/profile"><i class="bi bi-person-circle"></i> My profile</a>
               </li>
               <div class="divider dropdown-divider"></div>
               <li class="d-flex align-items-center">

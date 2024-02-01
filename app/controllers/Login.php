@@ -12,6 +12,10 @@ class Login extends Controller
         $this->view("login/index");
     }
 
+   
+
+
+
 
     public function authenticate()
     {
