@@ -62,8 +62,8 @@
             <div class="dropdown  ">
               <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="hugenerd" width="40" height="40" class="rounded-circle">
-                <span class="d-none d-sm-inline mx-1">admin</span>
+                
+                <span class="d-none d-sm-inline mx-1">Log-Out</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                 <li>
