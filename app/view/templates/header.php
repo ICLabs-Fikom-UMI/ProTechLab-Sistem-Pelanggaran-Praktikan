@@ -73,7 +73,7 @@
                 <div class="divider dropdown-divider"></div>
                 <li class="d-flex align-items-center">
                   <a class="dropdown-item" href="<?= BASEURL; ?>/login/logout">
-                    <i class="bi bi-box-arrow-right"></i> Log Out
+                    <i class="bi bi-box-arrow-right"></i> Log-in
                   </a>
                 </li>
               </ul>
