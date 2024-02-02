@@ -24,6 +24,20 @@ class Laporan_model
         return $this->db->resultSet();
     }
 
+    public function getPraktikan()
+    {
+        $this->db->query("SELECT mst_user.id_user, mst_user.nama, mst_user.nim FROM mst_user");
+        return $this->db->resultSet();
+
+    }
+
+    public function getStatus()
+    {
+        $this->db->query("SELECT mst_status.nama_status FROM mst_status");
+        return $this->db->resultSet();
+    }
+
+    
 
     public function getAllLaporan()
     {
@@ -47,17 +61,6 @@ class Laporan_model
         );
         return $this->db->resultSet();
     }
-
-
-
-    public function getPraktikan()
-    {
-        $this->db->query("SELECT mst_user.id_user, mst_user.nama, mst_user.nim FROM mst_user");
-        return $this->db->resultSet();
-
-    }
-
-    
 
 
     public function getTindak()
@@ -86,11 +89,6 @@ class Laporan_model
         return $this->db->resultSet();
     }
 
-    public function getStatus()
-    {
-        $this->db->query("SELECT mst_status.nama_status FROM mst_status");
-        return $this->db->resultSet();
-    }
 
     public function cariDataMahasiswa()
     {

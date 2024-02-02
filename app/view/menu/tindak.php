@@ -128,12 +128,7 @@
 
                 </table>
             </div>
-        </div>
-        <div class="col py-3 bg-white ">
-
-        </div>
-    </div>
-
+       
 
 
     <!-- Modal -->

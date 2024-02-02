@@ -35,96 +35,72 @@
 
 
             <!-- isi konten -->
-            <!-- <div class="col py-3 bg-light ">
-            <h1>Tampilan Menu</h1>
-            <h5>silahkan memilih fitur yang ada di sebelah</h5>
-            <br><br>
-
-
-        </div>
-    </div>
-    <div class="col py-3 bg-white ">
-
-    </div>
-</div> -->
+         
 
 
 
-            <!-- Modal -->
-            <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="judul modal" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="judul modal">Tambah Data </h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+             <!-- Modal -->
+    <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="judul modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="judul modal">Tambah Data </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form action="<?= BASEURL; ?>/menu/lapor/" method="post">
+                        <div class="mb-3">
+
+
+                            <!--  coba -->
+
+                            <div class="mb-3">
+                                <label for="frekuensi">frekuensi</label>
+                                <select class="form-select" aria-label="Default select example" name="frekuensi">
+                                    <?php foreach ($data['frekuensi'] as $frekuensi): ?>
+                                        <option value="<?= $frekuensi['id_frek']; ?>">
+                                            <?= $frekuensi['nama_frek'] . ' - ' . $frekuensi['nama_lab']; ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="nama">Nama</label>
+                                <select class="form-select" aria-label="Default select example" name="praktikan">
+                                    <?php foreach ($data['praktikan'] as $praktikan): ?>
+                                        <option value="<?= $praktikan['id_user']; ?>">
+                                            <?= $praktikan['nama'] . ' - ' . $praktikan['nim']; ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="deskripsi" class="form-label">deskripsi</label>
+                                <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="tanggal" class="form-label">tanggal</label>
+                                <input type="date" class="form-control" id="tanggal" name="tanggal">
+                            </div>
+
+
                         </div>
-                        <div class="modal-body">
-
-                            <form action="<?= BASEURL; ?>/menu/lapor/" method="post">
-                                <div class="mb-3">
-
-
-                                    <!--  coba -->
-
-                                    <div class="mb-3">
-                                        <label for="frekuensi">frekuensi</label>
-                                        <select class="form-select" aria-label="Default select example" name="frekuensi">
-                                            <?php foreach ($data['frekuensi'] as $frekuensi): ?>
-                                                <option value="<?= $frekuensi['id_frek']; ?>">
-                                                    <?= $frekuensi['nama_frek'] . ' - ' . $frekuensi['nama_lab']; ?>
-                                                </option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="nama">Nama</label>
-                                        <select class="form-select" aria-label="Default select example" name="praktikan">
-                                            <?php foreach ($data['praktikan'] as $praktikan): ?>
-                                                <option value="<?= $praktikan['id_user']; ?>">
-                                                    <?= $praktikan['nama'] . ' - ' . $praktikan['nim']; ?>
-                                                </option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-
-
-                                    <div class="mb-3">
-                                        <label for="deskripsi" class="form-label">deskripsi</label>
-                                        <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"></textarea>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="tanggal" class="form-label">tanggal</label>
-                                        <input type="date" class="form-control" id="tanggal" name="tanggal">
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="status">status</label>
-                                        <select class="form-select" aria-label="Default select example" name="status">
-                                            <?php foreach ($data['status'] as $status): ?>
-                                                <option value="<?= $status['id_status']; ?>">
-                                                    <?= $status['nama_status']; ?>
-                                                </option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-danger">Lapor</button>
-                            </form>
-                        </div>
-                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Lapor</button>
+                    </form>
                 </div>
             </div>
-
-
-
-
         </div>
+    </div>
+     </div>
+                                        
+            
     <?php } else {
     // Jika role tidak sesuai, redirect ke halaman login
     header("Location: " . BASEURL . "/login"); // Sesuaikan dengan path login yang sesuai di aplikasi Anda
