@@ -121,7 +121,7 @@
                         </div>
 
                     </form>
-                    <a href="<?= BASEURL; ?>/register">regist</a>
+                    <a href="<?= BASEURL; ?>/home/index">back</a>
                 </div>
             </div>
         </div>

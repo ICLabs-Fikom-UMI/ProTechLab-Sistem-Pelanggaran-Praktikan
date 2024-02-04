@@ -5,10 +5,10 @@ class Login extends Controller
 {
     public function index()
     {
-        if (isset($_SESSION['id_user'])) {
-            header('Location: ' . BASEURL . '/home/index');
-            exit();
-        }
+        // if (isset($_SESSION['id_user'])) {
+        //     header('Location: ' . BASEURL . '/home/index');
+        //     exit();
+        // }
         $this->view("login/index");
     }
 

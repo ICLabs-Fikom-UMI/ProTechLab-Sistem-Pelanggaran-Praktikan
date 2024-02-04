@@ -2,39 +2,28 @@
 
 class Menu extends Controller
 {
-    public function index()
-    {
-        try {
-            $data["judul"] = "Menu";
-            $laporanModel = $this->model('Laporan_model');
-            $data['frekuensi'] = $laporanModel->getFrekuensi();
-            $data["lapor"] = $this->model("Laporan_model")->getAllLaporan();
-            $data["praktikan"] = $laporanModel->getPraktikan();
-            $data["status"] = $laporanModel->getStatus();
-            $this->view("templates/header");
-            $this->view("menu/index", $data);
-            $this->view("templates/footer");
-        } catch (\Throwable $th) {
-            echo $th;
-        }
-    }
+    
 
 
     public function tindak()
     {
+        try{
         if ($_SESSION['role'] != 'admin') {
             header('Location: ' . BASEURL . '/home');
             exit;
         }
-        $data["judul"] = "lapor";
+        $data["judul"] = "tindak";
         $laporanModel = $this->model('Laporan_model');
         $data['frekuensi'] = $laporanModel->getFrekuensi();
-        $data["lapor"] = $this->model("Laporan_model")->getTindak();
+        $data["lapor"] = $this->model("Laporan_model")->getAllLaporan();
         $data["praktikan"] = $laporanModel->getPraktikan();
         $data["status"] = $laporanModel->getStatus();
         $this->view("templates/header");
         $this->view("menu/tindak", $data);
         $this->view("templates/footer");
+    } catch (\Throwable $th) {
+        echo $th;
+    }
     }
 
 
