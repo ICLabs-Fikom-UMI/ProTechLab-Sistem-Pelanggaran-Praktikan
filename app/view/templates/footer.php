@@ -1,8 +1,10 @@
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
 
 <!-- DataTables -->
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
@@ -19,6 +21,8 @@
         $('#myTable').DataTable();
     });
 </script>
+
+
 
 
 </div>
@@ -39,10 +43,17 @@
                     <div class="mb-3">
 
                         <!--  coba -->
+                        <div class="mb-3">
+                            <label for="semester" class="form-label">Semester</label>
+                            <select class="form-select" id="semester" name="semester">
+                                <option value="genap">Genap</option>
+                                <option value="ganjil">Ganjil</option>
+                            </select>
+                        </div>
 
                         <div class="mb-3">
-                            <label for="input nama" class="form-label">nama</label>
-                            <input type="text" class="form-control" id="nama">
+                            <label for="input frekuensi" class="form-label">frekuensi</label>
+                            <input type="text" class="form-control" id="frekuensi">
                         </div>
 
                         <div class="mb-3">
@@ -50,10 +61,6 @@
                             <input type="text" class="form-control" id="nim">
                         </div>
 
-                        <div class="mb-3">
-                            <label for="input frekuensi" class="form-label">frekuensi</label>
-                            <input type="text" class="form-control" id="frekuensi">
-                        </div>
 
                         <div class="mb-3">
                             <label for="input tempat" class="form-label">tempat</label>
@@ -71,9 +78,17 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">Default file input example</label>
-                            <input class="form-control" type="file" id="formFile">
+                        <label for="status" class="form-label">status</label>
+                            <select class="form-select form-select-sm" aria-label="Small select example">
+                                <?php foreach ($data['status'] as $status): ?>
+                                    <option value="<?= $status['id_status']; ?>">
+                                        <?= $status['nama_status']; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
+
+
 
                     </div>
                     <div class="modal-footer">

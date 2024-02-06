@@ -1,0 +1,70 @@
+<!-- views/frekuensi/tambah.php -->
+<div class="overflow-scroll" style="max-height: 85vh; overflow-x: hidden;">
+    <div class="container mt-3">
+        <h1>Tambah Data Frekuensi</h1>
+
+        <br>
+        <div class="col py-3 bg-light ">
+        <div class="row">
+            <div class="col-lg-6">
+                <?php Flasher::flash() ?>
+            </div>
+        </div>
+
+        <form action="<?= BASEURL; ?>/Menu/tambahFrekuensi" method="post">
+            <div class="mb-3">
+
+                <div class="mb-3">
+                    <label for="frekuensi" class="form-label">Nama Frekuensi</label>
+                    <input type="text" class="form-control mb-2" id="nama_frek" name="nama_frek"
+                        placeholder="Format =' jurusan_matkul-angka ' (TI_MICRO-1 / SI_WEB-1)">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Tambah Data</button>
+        </form>
+    </div>
+    <H1>Daftar Frekuensi </H1>
+
+    <div class="w-75 mx-auto mt-5 shadow-lg rounded-4 p-4">
+        <table id="myTable" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>no</th>
+                    <th>Frekuensi</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $no = 0;
+                foreach ($data["frekuensi"] as $frekuensi):
+                    $no++; ?>
+                    <tr>
+                        <td>
+                            <?= $no; ?>
+                        </td>
+                        <td>
+                            <?= $frekuensi["nama_frek"]; ?>
+                        </td>
+                        <td>
+                            <!-- Tambahkan tautan aksi di sini -->
+                            <button onclick="location.href='<?= BASEURL; ?>/menu/hapusFrekuensi/<?= $frekuensi['id_frek']; ?>'; return confirm ('yakin?')" class="badge text-danger mx-2">hapus</button>
+
+                            <a href="<?= BASEURL; ?>/menu/edit/<?= $lapor["nomor"]; ?>"
+                                class="badge text-success mx-2">edit</a>
+                            <!-- Anda dapat menambahkan aksi lainnya sesuai kebutuhan -->
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>no</th>
+
+                    <th>Frekuensi</th>
+                    <th>Aksi</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>

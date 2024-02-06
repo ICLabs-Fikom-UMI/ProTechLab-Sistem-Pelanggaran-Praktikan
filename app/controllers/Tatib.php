@@ -7,4 +7,11 @@ class Tatib extends Controller{
         $this->view("tatib/index");
         $this->view("templates/footer");
     }
+
+    public function detail(){
+        $data["judul"] = "Detail Pelanggaran";
+        $this->view("templates/header");
+        $this->view("tatib/detail");
+        $this->view("templates/footer");
+    }
 }

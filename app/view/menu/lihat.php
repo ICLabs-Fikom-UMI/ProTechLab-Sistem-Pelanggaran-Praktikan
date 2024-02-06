@@ -7,18 +7,18 @@
         <div class="row">
             <div class="col-lg-6">
                 <?php Flasher::flash() ?>
-
             </div>
         </div>
+
         <h1>Tampilan lihat</h1>
 
         <br><br>
+      
 
         <table id="myTable" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
                     <th>no</th>
-                    <th>nama</th>
                     <th>nim</th>
                     <th>frekuensi</th>
                     <th>tempat</th>
@@ -28,20 +28,17 @@
             </thead>
             <tbody>
                 <?php $no = 0;
-                foreach ($data["lapor"] as $lapor):
+                foreach ($data["lapor"] as $lapor ):
                     $no++; ?>
                     <tr>
                         <td>
                             <?= $no; ?>
                         </td>
                         <td>
-                            <?= $lapor["nama"]; ?>
-                        </td>
-                        <td>
                             <?= $lapor["nim"]; ?>
                         </td>
                         <td>
-                            <?= $lapor["frekuensi"]; ?>
+                            <?= $lapor["nama_frek"]; ?>
                         </td>
                         <td>
                             <?= $lapor["tempat"]; ?>
@@ -58,7 +55,6 @@
             <tfoot>
                 <tr>
                     <th>no</th>
-                    <th>nama</th>
                     <th>nim</th>
                     <th>frekuensi</th>
                     <th>tempat</th>
@@ -77,9 +73,6 @@
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">
-                                    <?= $lapor["nama"]; ?>
-                                </h5>
                                 <h6 class="card-subtitle mb-2 text-muted">
                                     <?= $lapor["nim"]; ?>
                                 </h6>

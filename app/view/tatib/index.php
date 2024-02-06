@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="text-center text-primary mb-4">TATA TERTIB PELAKSANAAN PRAKTIKUM LABORATORIUM TERPADU</h3>
-                <h4 class="text-center text-primary mb-4">Fakultas Ilmu Komputer - Universitas Muslim Indonesia</h4>
+                <h3 class="text-center text-dark mb-4">TATA TERTIB PELAKSANAAN PRAKTIKUM LABORATORIUM TERPADU</h3>
+                <h4 class="text-center text-dark mb-4">Fakultas Ilmu Komputer - Universitas Muslim Indonesia</h4>
 
                 <div class="card-deck">
                     <!-- Card 1: Pakaian Praktikum -->

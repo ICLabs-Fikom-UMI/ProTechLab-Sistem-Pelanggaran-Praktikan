@@ -7,12 +7,12 @@
     <thead>
         <tr>
             <th>no</th>
-            <th>nama</th>
             <th>nim</th>
             <th>frekuensi</th>
             <th>tempat</th>
             <th>deskripsi</th>
             <th>Tanggal Pelaporan</th>
+            <th>pelapor</th>
             <th>Status</th>
             <th>Aksi</th>
         </tr>
@@ -23,12 +23,12 @@
             $no++; ?>
             <tr>
                 <td><?= $no; ?></td>
-                <td><?= $lapor["nama"]; ?></td>
                 <td><?= $lapor["nim"]; ?></td>
-                <td><?= $lapor["frekuensi"]; ?></td>
+                <td><?= $lapor["nama_frek"]; ?></td>
                 <td><?= $lapor["tempat"]; ?></td>
                 <td><?= $lapor["deskripsi"]; ?></td>
                 <td><?= $lapor["tgl_laporan"]; ?></td>
+                <td><?= $lapor["username"]; ?></td>
                 <td>
                     <!-- Tambahkan dropdown status di sini -->
                     <select class="form-select form-select-sm" aria-label="Small select example">
@@ -51,12 +51,12 @@
     <tfoot>
         <tr>
             <th>no</th>
-            <th>nama</th>
             <th>nim</th>
             <th>frekuensi</th>
             <th>tempat</th>
             <th>deskripsi</th>
             <th>Tanggal Pelaporan</th>
+            <th>pelapor</th>
             <th>Status</th>
             <th>Aksi</th>
         </tr>
@@ -67,4 +67,4 @@
 
 
 
-                        </div>   -->
+                   

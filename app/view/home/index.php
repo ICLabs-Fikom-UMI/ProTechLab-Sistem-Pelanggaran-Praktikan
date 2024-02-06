@@ -15,7 +15,7 @@
         <div class="card-body">
           <h5 class="card-title">Statistik Pelaporan Pelanggaran</h5>
           <p class="card-text">Total Pelanggaran: 75</p>
-          <a href="#" class="btn btn-primary">Lihat Detail</a>
+          <a href="<?= BASEURL; ?>/tatib/detail" class="btn btn-primary">Lihat Detail</a>
         </div>
       </div>
       <div class="mt-3">
