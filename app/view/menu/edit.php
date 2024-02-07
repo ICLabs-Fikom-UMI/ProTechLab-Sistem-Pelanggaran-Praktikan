@@ -45,10 +45,10 @@
                                     onclick="location.href='<?= BASEURL; ?>/menu/hapusFrekuensi/<?= $frekuensi['id_frek']; ?>'; return confirm ('yakin?')"
                                     class="btn btn-danger hapusFrekuensi"> <i class="bi bi-trash-fill"></i>hapus</button>
 
-                                <button type="button" class="btn btn-success tampilEdit" data-bs-toggle="modal"
-                                    data-bs-target="#formModalEdit">
+                                <a href="<?= BASEURL; ?>/menu/ubah/<?= $frekuensi['id_frek']; ?>" class="btn btn-success tampilEdit" data-bs-toggle="modal"
+                                    data-bs-target="#formModalEdit" data-id="<?= $frekuensi['id_frek']; ?>">
                                     <i class="bi bi-pencil-fill"></i> Edit
-                                </button>
+                                </a>
 
                                 <!-- Anda dapat menambahkan aksi lainnya sesuai kebutuhan -->
                             </td>
@@ -77,6 +77,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="<?= BASEURL; ?>/Menu/tambahFrekuensi" method="post">
+                    <input type="hidden" name="id" id="id" value="">
                         <div class="mb-3">
 
                             <div class="mb-3">

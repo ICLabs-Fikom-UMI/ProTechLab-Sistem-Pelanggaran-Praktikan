@@ -3,7 +3,7 @@
 class Laporan_model
 {
 
-    private $table = "data_laporan";
+    private $table = "trx_frekuensi";
 
     private $db;
 
@@ -23,6 +23,14 @@ class Laporan_model
         $this->db->query("SELECT trx_frekuensi.id_frek, trx_frekuensi.nama_frek from trx_frekuensi ORDER BY trx_frekuensi.nama_frek ASC ");
         return $this->db->resultSet();
     }
+
+    public function getFrekuensiByid($id_frek)
+    {
+        $this->db->query("SELECT * FROM trx_frekuensi " . $this->table . " WHERE id_frek = :id_frek");
+        $this->db->bind(":id_frek", $id_frek);
+        return $this->db->single();
+    }
+
 
     public function getPraktikan()
     {
@@ -80,14 +88,14 @@ class Laporan_model
     {
         $queryCekFrekuensi = "SELECT COUNT(*) as total FROM trx_frekuensi WHERE
             nama_frek = :nama_frek ";
-    
+
         $this->db->query($queryCekFrekuensi);
         $this->db->bind('nama_frek', $data['nama_frek']);
         $this->db->execute();
-    
+
         return $this->db->single()['total'];
     }
-    
+
 
 
     public function tambahFrekuensi($data)
@@ -96,7 +104,7 @@ class Laporan_model
             $query = "INSERT INTO trx_frekuensi (nama_frek) VALUES (:nama_frek)";
             $this->db->query($query);
             $this->db->bind(':nama_frek', $data['nama_frek']);
-    
+
             $this->db->execute();
 
             return $this->db->rowCount();
@@ -104,7 +112,7 @@ class Laporan_model
             throw $th;
         }
     }
-    
+
 
 
     public function hapusData($id_frek)
@@ -116,6 +124,26 @@ class Laporan_model
 
         $this->db->execute();
         return $this->db->rowCount();
+    }
+
+
+
+    public function ubahFrekuensi($data)
+    {
+        $query = "UPDATE trx_frekuensi SET nama_frek = :nama_frek WHERE id_frek = :id_frek";
+            $this->db->query($query);
+
+            $this->db->bind(':nama_frek', $data['nama_frek']);
+            $this->db->bind(':id_frek', $data['id']);
+
+            $this->db->execute();
+
+            return $this->db->rowCount();
+        // try {
+            
+        // } catch (\Throwable $th) {
+        //     throw $th;
+        // }
     }
 
 
