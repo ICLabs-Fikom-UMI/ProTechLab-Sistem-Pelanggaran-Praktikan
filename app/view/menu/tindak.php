@@ -1,4 +1,4 @@
-<div class="col py-3 bg-light ">
+<div class="col py-3 ">
 
 <div class="d-flex justify-content-between align-items-center p-5">
     <h1>Daftar Tindak Lanjut</h1>
@@ -14,6 +14,7 @@
             <tr>
                 <th>no</th>
                 <th>nim</th>
+                <th>semester</th>
                 <th>frekuensi</th>
                 <th>tempat</th>
                 <th>deskripsi</th>
@@ -34,6 +35,10 @@
                     <td>
                         <?= $lapor["nim"]; ?>
                     </td>
+                    <td>
+                        <?= $lapor["semester"]; ?>
+                    </td>
+                
                     <td>
                         <?= $lapor["nama_frek"]; ?>
                     </td>
@@ -69,19 +74,7 @@
                 </tr>
             <?php endforeach; ?>
         </tbody>
-        <!-- <tfoot>
-            <tr>
-                <th>no</th>
-                <th>nim</th>
-                <th>frekuensi</th>
-                <th>tempat</th>
-                <th>deskripsi</th>
-                <th>Tanggal Pelaporan</th>
-                <th>pelapor</th>
-                <th>Status</th>
-                <th>Aksi</th>
-            </tr>
-        </tfoot> -->
+       
     </table>
     </div>
 

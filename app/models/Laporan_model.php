@@ -57,6 +57,7 @@ class Laporan_model
     public function getAllLaporanTindak()
     {
         $this->db->query("SELECT
+        trx_laporan.semester,
         trx_laporan.nim,
         trx_frekuensi.nama_frek,
         trx_laporan.tempat,
