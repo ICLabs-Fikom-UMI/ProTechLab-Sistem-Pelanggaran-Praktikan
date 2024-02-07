@@ -78,7 +78,7 @@
                         </div>
 
                         <div class="mb-3">
-                        <label for="status" class="form-label">status</label>
+                            <label for="status" class="form-label">status</label>
                             <select class="form-select form-select-sm" aria-label="Small select example">
                                 <?php foreach ($data['status'] as $status): ?>
                                     <option value="<?= $status['id_status']; ?>">

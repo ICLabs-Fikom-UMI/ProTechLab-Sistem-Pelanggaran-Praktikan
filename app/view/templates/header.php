@@ -20,6 +20,7 @@
       z-index: 99;
       height: 90px;
     }
+    
   </style>
 </head>
 
@@ -86,12 +87,6 @@
               <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
                 <i class="fs-4 bi-grid "></i> <span class="ms-1 d-none d-sm-inline">Fitur</span></a>
               <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                <?php if ($_SESSION['role'] == 'asisten' || $_SESSION['role'] == 'admin') { ?>
-                  <li class="w-100">
-                    <a href="<?= BASEURL; ?>/menu/index/" class="nav-link px-0 text-white" data-bs-toggle="modal"
-                      data-bs-target="#formModal"> <span class="d-none d-sm-inline">Lapor</span></a>
-                  </li>
-                <?php } ?>
                 <?php if ($_SESSION['role'] == 'admin') { ?>
                   <li>
                     <a href="<?= BASEURL; ?>/menu/tindak/" class="nav-link px-0 text-white"> <span

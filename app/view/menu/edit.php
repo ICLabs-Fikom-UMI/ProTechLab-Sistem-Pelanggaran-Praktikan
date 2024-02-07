@@ -1,6 +1,6 @@
 <!-- views/frekuensi/tambah.php -->
 <div class="overflow-scroll" style="max-height: 85vh; overflow-x: hidden;">
-    <div class="container mt-3">
+    <div class="container mt-3 p-5">
         <h1>Tambah Data Frekuensi</h1>
 
         <br>

@@ -10,11 +10,15 @@
             </div>
         </div>
 
-        <h1>Tampilan lihat</h1>
+        <div class="d-flex justify-content-between align-items-center p-5">
+            <h1>Tampilan lihat</h1>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
+                Lapor
+            </button>
+        </div>
 
-        <br><br>
-      
 
+        <div class=" mx-auto mt-2 shadow-lg rounded-4 p-4">
         <table id="myTable" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
@@ -28,7 +32,7 @@
             </thead>
             <tbody>
                 <?php $no = 0;
-                foreach ($data["lapor"] as $lapor ):
+                foreach ($data["lapor"] as $lapor):
                     $no++; ?>
                     <tr>
                         <td>
@@ -52,45 +56,8 @@
                     </tr>
                 <?php endforeach; ?>
             </tbody>
-            <tfoot>
-                <tr>
-                    <th>no</th>
-                    <th>nim</th>
-                    <th>frekuensi</th>
-                    <th>tempat</th>
-                    <th>deskripsi</th>
-                    <th>Tanggal Pelaporan</th>
-                </tr>
-            </tfoot>
+           
         </table>
-
-
-
-        <!-- card -->
-        <div class="container mt-5">
-            <div class="row">
-                <?php foreach ($data["lapor"] as $lapor): ?>
-                    <div class="col-md-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-subtitle mb-2 text-muted">
-                                    <?= $lapor["nim"]; ?>
-                                </h6>
-                                <p class="card-text">
-                                    <strong>Frekuensi:</strong>
-                                    <?= $lapor["frekuensi"]; ?><br>
-                                    <strong>Tempat:</strong>
-                                    <?= $lapor["tempat"]; ?><br>
-                                    <strong>Deskripsi:</strong>
-                                    <?= $lapor["deskripsi"]; ?><br>
-                                    <strong>Tanggal Pelaporan:</strong>
-                                    <?= $lapor["tanggal"]; ?><br>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
         </div>
 
     </div>
