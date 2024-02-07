@@ -70,11 +70,11 @@ class Menu extends Controller
     {
         try {
             if ($this->model("Laporan_model")->tambahFrekuensi($_POST) > 0) {
-                Flasher::setFlash("berhasil", "dirubah", "success");
+                Flasher::setFlash("berhasil", "ditambahkan ", "success");
                 header('Location: ' . BASEURL . '/menu/edit/');
                 exit;
             } else {
-                Flasher::setFlash("gagal", "dirubah", "danger");
+                Flasher::setFlash("gagal", "ditambahkan karena sudah ada", "danger");
                 header('Location: ' . BASEURL . '/menu/edit/');
                 exit;
             }

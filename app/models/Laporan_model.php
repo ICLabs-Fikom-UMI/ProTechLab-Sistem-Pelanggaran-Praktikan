@@ -99,19 +99,34 @@ class Laporan_model
 
 
     public function tambahFrekuensi($data)
-    {
-        try {
-            $query = "INSERT INTO trx_frekuensi (nama_frek) VALUES (:nama_frek)";
-            $this->db->query($query);
-            $this->db->bind(':nama_frek', $data['nama_frek']);
+{
+    try {
+        // Cek apakah nama_frek sudah ada
+        $cekQuery = "SELECT COUNT(*) as total FROM trx_frekuensi WHERE nama_frek = :nama_frek";
+        $this->db->query($cekQuery);
+        $this->db->bind(':nama_frek', $data['nama_frek']);
+        $this->db->execute();
 
-            $this->db->execute();
+        $result = $this->db->single();
+        $total = $result['total'];
 
-            return $this->db->rowCount();
-        } catch (\Throwable $th) {
-            throw $th;
+        if ($total > 0) {
+            // Jika nama_frek sudah ada, beri tanggapan atau lakukan tindakan sesuai kebutuhan
+            return 0; // Misalnya, mengembalikan nilai 0 untuk menandakan nama_frek sudah ada
         }
+
+        // Jika nama_frek belum ada, eksekusi query INSERT
+        $insertQuery = "INSERT INTO trx_frekuensi (nama_frek) VALUES (:nama_frek)";
+        $this->db->query($insertQuery);
+        $this->db->bind(':nama_frek', $data['nama_frek']);
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    } catch (\Throwable $th) {
+        throw $th;
     }
+}
+
 
 
 
