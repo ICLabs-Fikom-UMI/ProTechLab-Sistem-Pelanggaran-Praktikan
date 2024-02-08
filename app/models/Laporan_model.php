@@ -12,11 +12,6 @@ class Laporan_model
         $this->db = new Database;
     }
 
-    public function getLab()
-    {
-        $this->db->query("SELECT * FROM mst_lab");
-        return $this->db->resultSet();
-    }
 
     public function getFrekuensi()
     {
@@ -32,28 +27,12 @@ class Laporan_model
     }
 
 
-    public function getPraktikan()
-    {
-        $this->db->query("SELECT mst_user.id_user, mst_user.nama, mst_user.nim FROM mst_user");
-        return $this->db->resultSet();
-
-    }
-
     public function getStatus()
     {
         $this->db->query("SELECT mst_status.nama_status FROM mst_status");
         return $this->db->resultSet();
     }
-    public function getJurusan()
-    {
-        $this->db->query("SELECT mst_jurusan.jurusan FROM mst_jurusan");
-        return $this->db->resultSet();
-    }
-    public function getMatkul()
-    {
-        $this->db->query("SELECT mst_matkul.nama_matkul FROM mst_matkul");
-        return $this->db->resultSet();
-    }
+    
 
     public function getAllLaporanLihat()
     {
@@ -65,6 +44,7 @@ class Laporan_model
     public function getAllLaporanTindak()
     {
         $this->db->query("SELECT
+        trx_laporan.id_laporan,
         trx_laporan.semester,
         trx_laporan.nim,
         trx_frekuensi.nama_frek,

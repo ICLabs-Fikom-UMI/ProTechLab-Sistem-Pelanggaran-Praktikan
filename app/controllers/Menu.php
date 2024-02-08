@@ -9,9 +9,8 @@ class Menu extends Controller
             $data["judul"] = "tindak";
             $laporanModel = $this->model('Laporan_model');
             $data["lapor"] = $this->model("Laporan_model")->getAllLaporanTindak();
-            $data["praktikan"] = $laporanModel->getPraktikan();
-            $data["status"] = $laporanModel->getStatus();
             $data["frekuensi"] = $laporanModel->getFrekuensi();
+            $data["status"] = $this->model("Laporan_model")->getStatus();
             $this->view("templates/header");
             $this->view("menu/tindak", $data);
             $this->view("templates/footer", $data);
@@ -66,22 +65,22 @@ class Menu extends Controller
             echo $th;
         }
     }
-    public function hapusLaporan()
+    public function hapusLaporan($id_laporan)
     {
-        var_dump($_POST);
-        // try {
-        //     if ($this->model("Laporan_model")->hapusDataLaporan($id_laporan) > 0) {
-        //         Flasher::setFlash("berhasil", "dihapus", "success");
-        //         header('Location: ' . BASEURL . '/menu/tindak/');
-        //         exit;
-        //     } else {
-        //         Flasher::setFlash("gagal", "dihapus", "danger");
-        //         header('Location: ' . BASEURL . '/menu/tindak/');
-        //         exit;
-        //     }
-        // } catch (\Throwable $th) {
-        //     echo $th;
-        // }
+
+        try {
+            if ($this->model("Laporan_model")->hapusDataLaporan($id_laporan) > 0) {
+                Flasher::setFlash("berhasil", "dihapus", "success");
+                header('Location: ' . BASEURL . '/menu/tindak/');
+                exit;
+            } else {
+                Flasher::setFlash("gagal", "dihapus", "danger");
+                header('Location: ' . BASEURL . '/menu/tindak/');
+                exit;
+            }
+        } catch (\Throwable $th) {
+            echo $th;
+        }
     }
 
     public function tambahFrekuensi()

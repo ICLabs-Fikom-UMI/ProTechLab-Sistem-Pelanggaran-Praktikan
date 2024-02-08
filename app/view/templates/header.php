@@ -90,7 +90,7 @@
                   </li>
                   <li>
                     <a href="<?= BASEURL; ?>/menu/edit/" class="nav-link px-0 text-white"> <span
-                        class="d-none d-sm-inline">Tambah Frekuensi</span></a>
+                        class="d-none d-sm-inline">Frekuensi</span></a>
                   </li>
                 <?php } ?>
                 <li>

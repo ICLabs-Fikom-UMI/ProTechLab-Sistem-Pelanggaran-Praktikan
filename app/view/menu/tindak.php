@@ -67,16 +67,14 @@
                             </select>
                         </td>
                         <td>
-                            <button onclick="location.href='<?= BASEURL; ?>/menu/hapusLaporan/<?= $lapor['id_laporan']; ?>'; return confirm ('yakin?')"
-                                class="btn btn-danger hapusLaporan" style="margin-right: 10px;">
-                                <i class="bi bi-trash-fill"></i> Hapus
-                            </button>
+                            <!-- Tambahkan tautan aksi di sini -->
+                            <a href="<?= BASEURL; ?>/menu/hapusLaporan/<?= $lapor["id_laporan"]; ?>"
+                                class="badge text-danger mx-2"
+                                onclick="return confirm('Apakah Anda yakin ingin menghapus laporan ini?')">hapus</a>
 
-                            <a href="<?= BASEURL; ?>/menu/ubah/<?= $frekuensi['id_frek']; ?>"
-                                class="btn btn-success tampilEdit" data-bs-toggle="modal"
-                                data-bs-target="#formModalEdit" data-id="<?= $frekuensi['id_frek']; ?>">
-                                <i class="bi bi-pencil-fill"></i> Edit
-                            </a>
+                            <a href="<?= BASEURL; ?>/menu/edit/<?= $lapor["nomor"]; ?>"
+                                class="badge text-success mx-2">edit</a>
+                            <!-- Anda dapat menambahkan aksi lainnya sesuai kebutuhan -->
                         </td>
                     </tr>
                 <?php endforeach; ?>
