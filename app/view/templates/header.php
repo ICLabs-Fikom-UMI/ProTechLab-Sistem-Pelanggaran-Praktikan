@@ -29,17 +29,14 @@
   <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="<?= BASEURL; ?>/img/logo.png" alt="Logo" width="50" height="40" class="d-inline-block align-text-top">
+        <img src="<?= BASEURL; ?>/img/logo.png" alt="Logo" width="70" height="70" class="d-inline-block align-text-top mx-3">
       </a>
-      <a class="navbar-brand text-white" href="<?= BASEURL; ?>/about">ProTechLab</a>
+      <a class="navbar-brand text-white " href="<?= BASEURL; ?>/about">ProTechLab</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-        <div class="navbar-nav ms-auto">
-          <div class="dropdown">
+      <div class="dropdown">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
               id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="d-none d-sm-inline mx-1">Log-in</span>
@@ -60,10 +57,9 @@
               </li>
             </ul>
           </div>
-        </div>
-      </div>
     </div>
   </nav>
+
 
   <div class="container-fluid">
     <div class="row flex-nowrap">

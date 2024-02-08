@@ -39,10 +39,19 @@
             </div>
             <div class="modal-body">
 
-                <form action="<?= BASEURL; ?>/menu/lapor/" method="post">
+                <form action="<?= BASEURL; ?>/menu/tambahLaporanLihat/" method="post">
                     <div class="mb-3">
 
+
                         <!--  coba -->
+                        <input type="hidden"  value="<?= $_SESSION["id_user"]; ?>" name="id_user" id="id_user">
+                        <div class="mb-3">
+                            <label for="input pelapor" class="form-label">Pelapor</label>
+                            <input type="text" class="form-control" id="pelapor" name="pelapor"
+                                value="<?= $_SESSION["username"]; ?>">
+                        </div>
+
+
                         <div class="mb-3">
                             <label for="semester" class="form-label">Semester</label>
                             <select class="form-select" id="semester" name="semester">
@@ -52,20 +61,37 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="input frekuensi" class="form-label">frekuensi</label>
-                            <input type="text" class="form-control" id="frekuensi">
+                            <label for="frekuensi" class="form-label">Frekuensi</label>
+                            <select class="form-select form-select-sm selectpicker" id="id_frek" name="id_frek"
+                                aria-label="Small select example">
+                                <?php foreach ($data['frekuensi'] as $frekuensi): ?>
+                                    <option value="<?= $frekuensi['id_frek']; ?>">
+                                        <?= $frekuensi['nama_frek']; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
+
 
                         <div class="mb-3">
                             <label for="input nim" class="form-label">nim</label>
-                            <input type="text" class="form-control" id="nim">
+                            <input type="text" class="form-control" id="nim" name="nim">
                         </div>
 
 
                         <div class="mb-3">
-                            <label for="input tempat" class="form-label">tempat</label>
-                            <input type="text" class="form-control" id="tempat">
+                            <label for="tempat" class="form-label">Tempat</label>
+                            <select class="form-select" id="tempat" name="tempat">
+                                <?php
+                                $enumValues = array('Iot', 'Start-Up', 'Comnet', 'Multimedia', 'Computer Vision', 'Data Science', 'Micro', 'Working Space lt 2', 'Working Space lt 1', 'Pelataran Fikom');
+
+                                foreach ($enumValues as $value) {
+                                    echo "<option value=\"$value\">$value</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
+
 
                         <div class="mb-3">
                             <label for="deskripsi" class="form-label">deskripsi</label>
@@ -74,19 +100,10 @@
 
                         <div class="mb-3">
                             <label for="tanggal" class="form-label">tanggal</label>
-                            <input type="date" class="form-control" id="tanggal" name="tanggal">
+                            <input type="date" class="form-control" id="tgl_laporan" name="tgl_laporan">
                         </div>
 
-                        <div class="mb-3">
-                            <label for="status" class="form-label">status</label>
-                            <select class="form-select form-select-sm" aria-label="Small select example">
-                                <?php foreach ($data['status'] as $status): ?>
-                                    <option value="<?= $status['id_status']; ?>">
-                                        <?= $status['nama_status']; ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
+
 
 
 

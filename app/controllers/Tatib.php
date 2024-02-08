@@ -14,4 +14,11 @@ class Tatib extends Controller{
         $this->view("tatib/detail");
         $this->view("templates/footer");
     }
+
+    public function edittatib(){
+        $data["judul"] = "edit tatib";
+        $this->view("templates/header");
+        $this->view("tatib/edittatib");
+        $this->view("templates/footer");
+    }
 }

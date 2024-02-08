@@ -99,33 +99,54 @@ class Laporan_model
 
 
     public function tambahFrekuensi($data)
-{
-    try {
-        // Cek apakah nama_frek sudah ada
-        $cekQuery = "SELECT COUNT(*) as total FROM trx_frekuensi WHERE nama_frek = :nama_frek";
-        $this->db->query($cekQuery);
-        $this->db->bind(':nama_frek', $data['nama_frek']);
-        $this->db->execute();
+    {
+        try {
+            // Cek apakah nama_frek sudah ada
+            $cekQuery = "SELECT COUNT(*) as total FROM trx_frekuensi WHERE nama_frek = :nama_frek";
+            $this->db->query($cekQuery);
+            $this->db->bind(':nama_frek', $data['nama_frek']);
+            $this->db->execute();
 
-        $result = $this->db->single();
-        $total = $result['total'];
+            $result = $this->db->single();
+            $total = $result['total'];
 
-        if ($total > 0) {
-            // Jika nama_frek sudah ada, beri tanggapan atau lakukan tindakan sesuai kebutuhan
-            return 0; // Misalnya, mengembalikan nilai 0 untuk menandakan nama_frek sudah ada
+            if ($total > 0) {
+                // Jika nama_frek sudah ada, beri tanggapan atau lakukan tindakan sesuai kebutuhan
+                return 0; // Misalnya, mengembalikan nilai 0 untuk menandakan nama_frek sudah ada
+            }
+
+            // Jika nama_frek belum ada, eksekusi query INSERT
+            $insertQuery = "INSERT INTO trx_frekuensi (nama_frek) VALUES (:nama_frek)";
+            $this->db->query($insertQuery);
+            $this->db->bind(':nama_frek', $data['nama_frek']);
+            $this->db->execute();
+
+            return $this->db->rowCount();
+        } catch (\Throwable $th) {
+            throw $th;
         }
-
-        // Jika nama_frek belum ada, eksekusi query INSERT
-        $insertQuery = "INSERT INTO trx_frekuensi (nama_frek) VALUES (:nama_frek)";
-        $this->db->query($insertQuery);
-        $this->db->bind(':nama_frek', $data['nama_frek']);
-        $this->db->execute();
-
-        return $this->db->rowCount();
-    } catch (\Throwable $th) {
-        throw $th;
     }
-}
+
+    public function tambahDataLapor($data)
+    {
+        try {
+            $insertQuery = "INSERT INTO trx_laporan (semester, nim, id_frek, tempat, deskripsi, tgl_laporan, id_user) VALUES (:semester, :nim, :id_frek, :tempat, :deskripsi, :tgl_laporan, :id_user)";
+            $this->db->query($insertQuery);
+            $this->db->bind(':semester', $data['semester']);
+            $this->db->bind(':nim', $data['nim']);
+            $this->db->bind(':id_frek', $data['id_frek']);
+            $this->db->bind(':tempat', $data['tempat']);
+            $this->db->bind(':deskripsi', $data['deskripsi']);
+            $this->db->bind(':tgl_laporan', $data['tgl_laporan']);
+            $this->db->bind(':id_user', $data['id_user']);
+            $this->db->execute();
+    
+            return $this->db->rowCount();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+    
 
 
 
@@ -141,24 +162,30 @@ class Laporan_model
         return $this->db->rowCount();
     }
 
+    public function hapusDataLaporan($id_laporan)
+    {
+        $query = "DELETE FROM trx_laporan WHERE id_laporan = :id_laporan";
+        $this->db->query($query);
+        $this->db->bind("id_laporan", $id_laporan);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
 
 
     public function ubahFrekuensi($data)
     {
         $query = "UPDATE trx_frekuensi SET nama_frek = :nama_frek WHERE id_frek = :id_frek";
-            $this->db->query($query);
+        $this->db->query($query);
 
-            $this->db->bind(':nama_frek', $data['nama_frek']);
-            $this->db->bind(':id_frek', $data['id']);
+        $this->db->bind(':nama_frek', $data['nama_frek']);
+        $this->db->bind(':id_frek', $data['id']);
 
-            $this->db->execute();
+        $this->db->execute();
 
-            return $this->db->rowCount();
-        // try {
-            
-        // } catch (\Throwable $th) {
-        //     throw $th;
-        // }
+        return $this->db->rowCount();
+      
     }
 
 

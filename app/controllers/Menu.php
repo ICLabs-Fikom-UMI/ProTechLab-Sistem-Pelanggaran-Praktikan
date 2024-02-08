@@ -42,6 +42,7 @@ class Menu extends Controller
         $data["judul"] = "Lihat";
         $data["lapor"] = $this->model("Laporan_model")->getAllLaporanLihat();
         $data["status"] = $this->model("Laporan_model")->getStatus();
+        $data["frekuensi"] = $this->model("Laporan_model")->getFrekuensi();
         $this->view("templates/header");
         $this->view("menu/lihat", $data);
         $this->view("templates/footer", $data);
@@ -65,6 +66,23 @@ class Menu extends Controller
             echo $th;
         }
     }
+    public function hapusLaporan()
+    {
+        var_dump($_POST);
+        // try {
+        //     if ($this->model("Laporan_model")->hapusDataLaporan($id_laporan) > 0) {
+        //         Flasher::setFlash("berhasil", "dihapus", "success");
+        //         header('Location: ' . BASEURL . '/menu/tindak/');
+        //         exit;
+        //     } else {
+        //         Flasher::setFlash("gagal", "dihapus", "danger");
+        //         header('Location: ' . BASEURL . '/menu/tindak/');
+        //         exit;
+        //     }
+        // } catch (\Throwable $th) {
+        //     echo $th;
+        // }
+    }
 
     public function tambahFrekuensi()
     {
@@ -76,6 +94,26 @@ class Menu extends Controller
             } else {
                 Flasher::setFlash("gagal", "ditambahkan karena sudah ada", "danger");
                 header('Location: ' . BASEURL . '/menu/edit/');
+                exit;
+            }
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+
+    }
+
+    public function tambahLaporanLihat()
+    {
+        
+       
+        try {
+            if ($this->model("Laporan_model")->tambahDataLapor($_POST) > 0) {
+                Flasher::setFlash("berhasil", "ditambahkan ", "success");
+                header('Location: ' . BASEURL . '/menu/lihat/');
+                exit;
+            } else {
+                Flasher::setFlash("gagal", "ditambahkan karena sudah ada", "danger");
+                header('Location: ' . BASEURL . '/menu/lihat/');
                 exit;
             }
         } catch (\Throwable $th) {
