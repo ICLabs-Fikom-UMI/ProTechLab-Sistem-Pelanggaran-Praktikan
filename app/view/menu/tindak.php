@@ -1,3 +1,4 @@
+
 <div class="overflow-scroll" style="max-height: 85vh; overflow-x: hidden;">
 
 
@@ -11,7 +12,7 @@
         <div class="d-flex justify-content-between align-items-center p-5 ">
             <h1>Daftar Tindak Lanjut</h1>
             <?php if ($_SESSION['role'] == 'asisten' || $_SESSION['role'] == 'admin') { ?>
-                <button type="button" class="btn btn-primary tombolLapor" data-bs-toggle="modal" data-bs-target="#formModal">
+                <button type="button" class="btn btn-danger tombolLapor" data-bs-toggle="modal" data-bs-target="#formModal">
                     Lapor
                 </button>
             <?php } ?>
@@ -93,3 +94,4 @@
 
     </div>
 </div>
+
