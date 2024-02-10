@@ -26,13 +26,20 @@ class Laporan_model
         return $this->db->single();
     }
 
+    public function getLaporanByid($id_laporan)
+    {
+        $this->db->query("SELECT * FROM trx_laporan WHERE id_laporan = :id_laporan");
+        $this->db->bind(":id_laporan", $id_laporan);
+        return $this->db->single();
+    }
+
 
     public function getStatus()
     {
         $this->db->query("SELECT mst_status.nama_status FROM mst_status");
         return $this->db->resultSet();
     }
-    
+
 
     public function getAllLaporanLihat()
     {
@@ -120,13 +127,13 @@ class Laporan_model
             $this->db->bind(':tgl_laporan', $data['tgl_laporan']);
             $this->db->bind(':id_user', $data['id_user']);
             $this->db->execute();
-    
+
             return $this->db->rowCount();
         } catch (\Throwable $th) {
             throw $th;
         }
     }
-    
+
 
 
 
@@ -165,7 +172,38 @@ class Laporan_model
         $this->db->execute();
 
         return $this->db->rowCount();
-      
+
+    }
+
+    public function ubahLaporan($data)
+    {
+        try {
+            $query = "UPDATE trx_laporan SET 
+            semester = :semester,
+            nim = :nim,
+            id_frek = :id_frek,
+            tempat = :tempat,
+            deskripsi = :deskripsi,
+            tgl_laporan = :tgl_laporan,
+            id_user = :id_user
+             WHERE id_laporan = :id_laporan";
+
+
+            $this->db->query($query);
+            $this->db->bind(':semester', $data['semester']);
+            $this->db->bind(':nim', $data['nim']);
+            $this->db->bind(':id_frek', $data['id_frek']);
+            $this->db->bind(':tempat', $data['tempat']);
+            $this->db->bind(':deskripsi', $data['deskripsi']);
+            $this->db->bind(':tgl_laporan', $data['tgl_laporan']);
+            $this->db->bind(':id_user', $data['id_user']);
+            $this->db->bind(':id_laporan', $data['id_laporan']);
+            $this->db->execute();
+
+            return $this->db->rowCount();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
 

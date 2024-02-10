@@ -9,13 +9,16 @@
                 <?php Flasher::flash() ?>
             </div>
         </div>
-
+        
         <div class="d-flex justify-content-between align-items-center p-5 ">
             <h1>Tampilan lihat</h1>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
+            <?php if ($_SESSION['role'] == 'asisten' || $_SESSION['role'] == 'admin') { ?>
+            <button type="button" class="btn btn-primary tombolLapor" data-bs-toggle="modal" data-bs-target="#formModal">
                 Lapor
             </button>
+            <?php } ?>
         </div>
+        
 
 
         <div class=" mx-auto mt-5 shadow-lg rounded-4 p-4">

@@ -34,31 +34,34 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="judul modal">Tambah Data </h1>
+                <h1 class="modal-title fs-5" id="judulmodalLapor">Tambah Data </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
 
                 <form action="<?= BASEURL; ?>/menu/tambahLaporanLihat/" method="post">
+                    <input type="hidden" name="id_laporan" id="id_laporan">
                     <div class="mb-3">
 
 
                         <!--  coba -->
-                        <input type="hidden"  value="<?= $_SESSION["id_user"]; ?>" name="id_user" id="id_user">
+                        <input type="hidden" value="<?= $_SESSION["id_user"]; ?>" name="id_user" id="id_user">
                         <div class="mb-3">
                             <label for="input pelapor" class="form-label">Pelapor</label>
                             <input type="text" class="form-control" id="pelapor" name="pelapor"
                                 value="<?= $_SESSION["username"]; ?>">
                         </div>
 
-
                         <div class="mb-3">
                             <label for="semester" class="form-label">Semester</label>
                             <select class="form-select" id="semester" name="semester">
-                                <option value="genap">Genap</option>
-                                <option value="ganjil">Ganjil</option>
+                                <option value="Genap" >Genap
+                                </option>
+                                <option value="Ganjil" >Ganjil
+                                </option>
                             </select>
                         </div>
+
 
                         <div class="mb-3">
                             <label for="frekuensi" class="form-label">Frekuensi</label>
@@ -75,7 +78,8 @@
 
                         <div class="mb-3">
                             <label for="input nim" class="form-label">nim</label>
-                            <input type="text" class="form-control" id="nim" name="nim">
+                            <input type="text" class="form-control" id="nim" name="nim" required minlength="11"
+                                maxlength="11" size="11">
                         </div>
 
 
