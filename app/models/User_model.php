@@ -18,6 +18,12 @@ class User_model{
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    public function dataLaporan()
+    {
+        $this->db->query("SELECT COUNT(*) as total FROM trx_laporan");
+        return $this->db->single();
+    }
     
 }
 

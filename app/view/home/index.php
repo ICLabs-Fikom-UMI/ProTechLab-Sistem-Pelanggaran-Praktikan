@@ -16,9 +16,11 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Statistik Pelaporan Pelanggaran</h5>
-          <p class="card-text">Total Pelanggaran: 
-    <span id="totalPelanggaran"><?= $data['jumlahLaporan']; ?></span>
-</p>
+          <p class="card-text">Total Pelanggaran:
+            <span id="totalPelanggaran">
+              <?= $data['total']["total"]; ?>
+            </span>
+          </p>
 
 
           <a href="<?= BASEURL; ?>/tatib/detail" class="btn btn-primary">Lihat Detail</a>

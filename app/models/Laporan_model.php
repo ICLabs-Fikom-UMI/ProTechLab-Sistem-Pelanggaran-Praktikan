@@ -33,13 +33,6 @@ class Laporan_model
         return $this->db->single();
     }
 
-    public function dataLaporan()
-    {
-        $this->db->query("SELECT COUNT(*) as total FROM trx_laporan");
-        return $this->db->single();
-    }
-
-
 
     public function getStatus()
     {
