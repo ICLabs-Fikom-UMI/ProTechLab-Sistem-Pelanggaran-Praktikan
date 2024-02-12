@@ -2,6 +2,9 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-md-8">
+  
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script><lottie-player src="https://lottie.host/a2caaada-f09d-42aa-a546-de08e92f9aa7/9rb8RzhnvY.json" background="##fff" speed="1" style="width: 450px; height: 450px" loop  autoplay direction="1" mode="normal" ></lottie-player>
+   
       <h2>Selamat Datang di ProTechLab</h2>
       <p>
         ProTechLab adalah platform yang didedikasikan untuk pelaporan pelanggaran dan pengamatan di laboratorium teknis
@@ -26,39 +29,9 @@
           <a href="<?= BASEURL; ?>/tatib/detail" class="btn btn-primary">Lihat Detail</a>
         </div>
       </div>
-      <div class="mt-3">
-        <h5>Artikel Terbaru</h5>
-        <ul class="list-group">
-          <li class="list-group-item"><a href="#">Cara Melaporkan Pelanggaran dengan Mudah</a></li>
-          <li class="list-group-item"><a href="#">Pentingnya Keamanan dalam Laboratorium</a></li>
-        </ul>
-      </div>
     </div>
     <div>
 
-    </div>
-    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="..." class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="..." class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="..." class="d-block w-100" alt="...">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
 
   </div>

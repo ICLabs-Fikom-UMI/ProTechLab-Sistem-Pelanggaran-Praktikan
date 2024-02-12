@@ -51,25 +51,28 @@ class Laporan_model
     public function getAllLaporanTindak()
     {
         $this->db->query("SELECT
-        trx_laporan.id_laporan,
-        trx_laporan.semester,
-        trx_laporan.nim,
-        trx_frekuensi.nama_frek,
-        trx_laporan.tempat,
-        trx_laporan.deskripsi,
-        trx_laporan.tgl_laporan,
-        mst_user.username
-    FROM
-        trx_laporan
-    INNER JOIN
-        trx_frekuensi ON trx_laporan.id_frek = trx_frekuensi.id_frek
-    INNER JOIN
-        mst_user ON trx_laporan.id_user = mst_user.id_user
-    ORDER BY
-        trx_laporan.tgl_laporan DESC
-    ");
+            trx_laporan.id_laporan,
+            trx_laporan.semester,
+            trx_laporan.nim,
+            trx_frekuensi.nama_frek,
+            trx_laporan.tempat,
+            trx_laporan.deskripsi,
+            trx_laporan.tgl_laporan,
+            trx_laporan.photo_path,
+            mst_user.username
+        FROM
+            trx_laporan
+        INNER JOIN
+            trx_frekuensi ON trx_laporan.id_frek = trx_frekuensi.id_frek
+        INNER JOIN
+            mst_user ON trx_laporan.id_user = mst_user.id_user
+        ORDER BY
+            trx_laporan.tgl_laporan DESC
+        ");
+
         return $this->db->resultSet();
     }
+
 
     public function cekFrekuensi($data)
     {
@@ -113,11 +116,27 @@ class Laporan_model
             throw $th;
         }
     }
+    private function uploadPhoto()
+    {
+        $file = $_FILES['photo_path'];
+        $fileName = $file['name'];
+        $fileTmpName = $file['tmp_name'];
+        $fileError = $file['error'];
+
+        if ($fileError === UPLOAD_ERR_OK) {
+            $destination = 'img/uploads/' . $fileName;
+            move_uploaded_file($fileTmpName, $destination);
+            return $destination;
+        } else {
+            return null;
+        }
+    }
 
     public function tambahDataLapor($data)
     {
         try {
-            $insertQuery = "INSERT INTO trx_laporan (semester, nim, id_frek, tempat, deskripsi, tgl_laporan, id_user) VALUES (:semester, :nim, :id_frek, :tempat, :deskripsi, :tgl_laporan, :id_user)";
+            $insertQuery = "INSERT INTO trx_laporan (semester, nim, id_frek, tempat, deskripsi, tgl_laporan, id_user, photo_path) VALUES (:semester, :nim, :id_frek, :tempat, :deskripsi, :tgl_laporan, :id_user, :photo_path)";
+            $photo_path = $this->uploadPhoto();
             $this->db->query($insertQuery);
             $this->db->bind(':semester', $data['semester']);
             $this->db->bind(':nim', $data['nim']);
@@ -126,6 +145,7 @@ class Laporan_model
             $this->db->bind(':deskripsi', $data['deskripsi']);
             $this->db->bind(':tgl_laporan', $data['tgl_laporan']);
             $this->db->bind(':id_user', $data['id_user']);
+            $this->db->bind(':photo_path', $photo_path);
             $this->db->execute();
 
             return $this->db->rowCount();
@@ -133,8 +153,6 @@ class Laporan_model
             throw $th;
         }
     }
-
-
 
 
 
@@ -185,11 +203,13 @@ class Laporan_model
             tempat = :tempat,
             deskripsi = :deskripsi,
             tgl_laporan = :tgl_laporan,
+            photo_path = :photo_path,
             id_user = :id_user
              WHERE id_laporan = :id_laporan";
 
 
             $this->db->query($query);
+            $photo_path = $this->uploadPhoto();
             $this->db->bind(':semester', $data['semester']);
             $this->db->bind(':nim', $data['nim']);
             $this->db->bind(':id_frek', $data['id_frek']);
@@ -197,7 +217,8 @@ class Laporan_model
             $this->db->bind(':deskripsi', $data['deskripsi']);
             $this->db->bind(':tgl_laporan', $data['tgl_laporan']);
             $this->db->bind(':id_user', $data['id_user']);
-            $this->db->bind(':id_laporan', $data['id_laporan']);
+            $this->db->bind(':photo_path', $data['photo_path']);
+            $this->db->bind(':id_laporan', $photo_path);
             $this->db->execute();
 
             return $this->db->rowCount();

@@ -5,14 +5,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Halaman <?= $data["judul"]; ?></title>
+  <title>Halaman
+    <?= $data["judul"]; ?>
+  </title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
   <style>
     .navbar-custom {
@@ -20,7 +23,6 @@
       z-index: 99;
       height: 90px;
     }
-    
   </style>
 </head>
 
@@ -29,7 +31,8 @@
   <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="<?= BASEURL; ?>/img/logo.png" alt="Logo" width="70" height="70" class="d-inline-block align-text-top mx-3">
+        <img src="<?= BASEURL; ?>/img/logo.png" alt="Logo" width="70" height="70"
+          class="d-inline-block align-text-top mx-3">
       </a>
       <a class="navbar-brand text-white " href="<?= BASEURL; ?>/about">ProTechLab</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -37,26 +40,26 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="dropdown">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-              id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="d-none d-sm-inline mx-1">Log-in</span>
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="d-none d-sm-inline mx-1">Log-in</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+          <div class="divider dropdown-divider"></div>
+          <li class="d-flex align-items-center">
+            <a class="dropdown-item" href="<?= BASEURL; ?>/login">
+              <i class="fa-solid fa-right-to-bracket"></i> Log-in
             </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-              <div class="divider dropdown-divider"></div>
-              <li class="d-flex align-items-center">
-                <a class="dropdown-item" href="<?= BASEURL; ?>/login">
-                  <i class="fa-solid fa-right-to-bracket"></i> Log-in
-                </a>
-              </li>
-              <li>
-                <?php if ($_SESSION['role'] == 'asisten' || $_SESSION['role'] == 'admin') { ?>
-                  <a class="dropdown-item" href="<?= BASEURL; ?>/login/logout">
-                    <i class="bi bi-box-arrow-right"></i> Log-Out
-                  </a>
-                <?php } ?>
-              </li>
-            </ul>
-          </div>
+          </li>
+          <li>
+            <?php if ($_SESSION['role'] == 'asisten' || $_SESSION['role'] == 'admin') { ?>
+              <a class="dropdown-item" href="<?= BASEURL; ?>/login/logout">
+                <i class="bi bi-box-arrow-right"></i> Log-Out
+              </a>
+            <?php } ?>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -76,13 +79,12 @@
                 <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
               </a>
             </li>
-
             <br>
 
             <li>
               <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
                 <i class="fs-4 bi-grid "></i> <span class="ms-1 d-none d-sm-inline">Fitur</span></a>
-              <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+              <ul class="collapse show nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                 <?php if ($_SESSION['role'] == 'admin') { ?>
                   <li>
                     <a href="<?= BASEURL; ?>/menu/tindak/" class="nav-link px-0 text-white"> <span

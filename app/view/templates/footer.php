@@ -23,8 +23,6 @@
 </script>
 
 
-
-
 </div>
 </div>
 </div>
@@ -38,8 +36,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
-                <form action="<?= BASEURL; ?>/menu/tambahLaporanLihat/" method="post">
+                <form action="<?= BASEURL; ?>/menu/tambahLaporanLihat/" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id_laporan" id="id_laporan">
                     <div class="mb-3">
 
@@ -55,9 +52,9 @@
                         <div class="mb-3">
                             <label for="semester" class="form-label">Semester</label>
                             <select class="form-select" id="semester" name="semester">
-                                <option value="Genap" >Genap
+                                <option value="Genap">Genap
                                 </option>
-                                <option value="Ganjil" >Ganjil
+                                <option value="Ganjil">Ganjil
                                 </option>
                             </select>
                         </div>
@@ -107,8 +104,10 @@
                             <input type="date" class="form-control" id="tgl_laporan" name="tgl_laporan">
                         </div>
 
-
-
+                        <div class="mb-3">
+                            <label for="input photo_path" class="form-label">Foto</label>
+                            <input type="file" class="form-control" id="photo_path" name="photo_path">
+                        </div>
 
 
                     </div>
@@ -120,6 +119,8 @@
         </div>
     </div>
 </div>
+
+
 </body>
 
 </html>

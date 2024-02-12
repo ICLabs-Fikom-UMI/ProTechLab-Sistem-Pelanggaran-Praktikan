@@ -31,6 +31,7 @@
                         <th>Tanggal Pelaporan</th>
                         <th>pelapor</th>
                         <th>Status</th>
+                        <th>foto</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -66,13 +67,16 @@
                             </td>
                             <td>
                                 <!-- Tambahkan dropdown status di sini -->
-                                <select class="form-select form-select-sm" aria-label="Small select example">
+                                <select class="form-select form-select-sm" aria-label="Small select example" name="nama_status">
                                     <?php foreach ($data['status'] as $status): ?>
                                         <option value="<?= $status['id_status']; ?>">
                                             <?= $status['nama_status']; ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
+                            </td>
+                            <td>
+                                <img src="<?= BASEURL; ?>/<?= $lapor['photo_path']?>" alt="Follow" style="max-height: 100px;">
                             </td>
                             <td>
                                 <!-- Tambahkan tautan aksi di sini -->

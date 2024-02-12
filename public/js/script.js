@@ -57,6 +57,7 @@ $(function () {
                 $("#tempat").val(data.tempat);
                 $("#deskripsi").val(data.deskripsi);
                 $("#tgl_laporan").val(data.tgl_laporan);
+                $("#photo_path").val(data.photo_path);
                 $("#id_laporan").val(data.id_laporan);
                 
             }
