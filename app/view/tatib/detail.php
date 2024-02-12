@@ -1,29 +1,47 @@
-<div class="d-inline-block">
-        <div class="card warning">
-            <div class="card-header">Warning</div>
-            <div class="card-body">
-                <div class="status">Status: Warning</div>
-                <p>Information about the warning status goes here...</p>
+<div class="row">
+    <div class="col-md-4 col-xl-3 mb-4">
+            <div class="card">
+                <div class="card-block d-flex justify-content-between">
+                    <div>
+                        <img src="..\public\img\ruangan.svg" alt="Total ruangan" class="mb-3">
+                        <h6>Total Ruangan</h6>
+                        <h2><span></span></h2>
+                        <p>Total Ruangan yang dimiliki</p>
+                    </div>
+                    <div>
+                        <i class=" fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="d-inline-block">
-        <div class="card facing">
-            <div class="card-header">Facing</div>
-            <div class="card-body">
-                <div class="status">Status: Facing</div>
-                <p>Information about the facing status goes here...</p>
+        <div class="col-md-4 col-xl-3 mb-4">
+            <div class="card">
+                <div class="card-block d-flex justify-content-between">
+                    <div>
+                        <img src="..\public\img\pengguna.svg" alt="Total pengguna" class="mb-3">
+                        <h6>Total Pengguna</h6>
+                        <h2><span></span></h2>
+                        <p>Total Pengguna saat ini</p>
+                    </div>
+                    <div>
+                        <i class=" fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="d-inline-block">
-        <div class="card blacklist">
-            <div class="card-header">Blacklist</div>
-            <div class="card-body">
-                <div class="status">Status: Blacklist</div>
-                <p>Information about the blacklist status goes here...</p>
+        <div class="col-md-4 col-xl-3 mb-4">
+            <div class="card">
+                <div class="card-block d-flex justify-content-between">
+                    <div>
+                        <img src="..\public\img\jurusan.svg" alt="Total jurusan" class="mb-3">
+                        <h6>Total Jurusan</h6>
+                        <h2><span></span></h2>
+                        <p>Total Jurusan saat ini</p>
+                    </div>
+                    <div>
+                        <i class=" fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+</div>
