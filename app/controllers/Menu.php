@@ -103,8 +103,8 @@ class Menu extends Controller
 
     public function tambahLaporanLihat()
     {
-        
-       
+
+
         try {
             if ($this->model("Laporan_model")->tambahDataLapor($_POST) > 0) {
                 Flasher::setFlash("berhasil", "ditambahkan ", "success");
@@ -127,37 +127,38 @@ class Menu extends Controller
     }
 
     public function ubah()
-    { 
-    if ($this->model("Laporan_model")->ubahFrekuensi($_POST) > 0) {
-        Flasher::setFlash("berhasil", "dirubah", "success");
-        header('Location: ' . BASEURL . '/menu/edit/');
-        exit;
-    } else {
-        Flasher::setFlash("gagal", "dirubah", "danger");
-        header('Location: ' . BASEURL . '/menu/edit/');
-        exit;
-    }
+    {
+        if ($this->model("Laporan_model")->ubahFrekuensi($_POST) > 0) {
+            Flasher::setFlash("berhasil", "dirubah", "success");
+            header('Location: ' . BASEURL . '/menu/edit/');
+            exit;
+        } else {
+            Flasher::setFlash("gagal", "dirubah", "danger");
+            header('Location: ' . BASEURL . '/menu/edit/');
+            exit;
+        }
     }
 
-    public function laporUbah(){
-        echo json_encode($this->model("Laporan_model")->getLaporanByid($_POST["id"])) ;
+    public function laporUbah()
+    {
+        echo json_encode($this->model("Laporan_model")->getLaporanByid($_POST["id"]));
     }
 
     public function editLaporan()
-    { 
-        try { 
-    if ($this->model("Laporan_model")->ubahLaporan($_POST) > 0) {
-        Flasher::setFlash("berhasil", "dirubah", "success");
-        header('Location: ' . BASEURL . '/menu/tindak/');
-        exit;
-    } else {
-        Flasher::setFlash("gagal", "dirubah", "danger");
-        header('Location: ' . BASEURL . '/menu/tindak/');
-        exit;
-    }
-} catch (\Throwable $th) {
-    echo $th;
-}
+    {
+        try {
+            if ($this->model("Laporan_model")->ubahLaporan($_POST) > 0) {
+                Flasher::setFlash("berhasil", "dirubah", "success");
+                header('Location: ' . BASEURL . '/menu/tindak/');
+                exit;
+            } else {
+                Flasher::setFlash("gagal", "dirubah", "danger");
+                header('Location: ' . BASEURL . '/menu/tindak/');
+                exit;
+            }
+        } catch (\Throwable $th) {
+            echo $th;
+        }
     }
 
 

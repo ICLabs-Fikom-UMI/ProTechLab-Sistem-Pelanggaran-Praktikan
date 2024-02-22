@@ -31,7 +31,6 @@
                         <th>Tanggal Pelaporan</th>
                         <th>pelapor</th>
                         <th>Status</th>
-                        <th>foto</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -75,9 +74,7 @@
                                     <?php endforeach; ?>
                                 </select>
                             </td>
-                            <td>
-                                <img src="<?= BASEURL; ?>/<?= $lapor['photo_path']?>" alt="Follow" style="max-height: 100px;">
-                            </td>
+
                             <td>
                                 <!-- Tambahkan tautan aksi di sini -->
                                 <a href="<?= BASEURL; ?>/menu/hapusLaporan/<?= $lapor["id_laporan"]; ?>"

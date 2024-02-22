@@ -104,10 +104,6 @@
                             <input type="date" class="form-control" id="tgl_laporan" name="tgl_laporan">
                         </div>
 
-                        <div class="mb-3">
-                            <label for="input photo_path" class="form-label">Foto</label>
-                            <input type="file" class="form-control" id="photo_path" name="photo_path">
-                        </div>
 
 
                     </div>

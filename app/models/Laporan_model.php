@@ -58,7 +58,6 @@ class Laporan_model
             trx_laporan.tempat,
             trx_laporan.deskripsi,
             trx_laporan.tgl_laporan,
-            trx_laporan.photo_path,
             mst_user.username
         FROM
             trx_laporan
@@ -132,11 +131,13 @@ class Laporan_model
         }
     }
 
+
+
     public function tambahDataLapor($data)
     {
         try {
-            $insertQuery = "INSERT INTO trx_laporan (semester, nim, id_frek, tempat, deskripsi, tgl_laporan, id_user, photo_path) VALUES (:semester, :nim, :id_frek, :tempat, :deskripsi, :tgl_laporan, :id_user, :photo_path)";
-            $photo_path = $this->uploadPhoto();
+            $insertQuery = "INSERT INTO trx_laporan (semester, nim, id_frek, tempat, deskripsi, tgl_laporan, id_user) VALUES (:semester, :nim, :id_frek, :tempat, :deskripsi, :tgl_laporan, :id_user)";
+      
             $this->db->query($insertQuery);
             $this->db->bind(':semester', $data['semester']);
             $this->db->bind(':nim', $data['nim']);
@@ -145,7 +146,6 @@ class Laporan_model
             $this->db->bind(':deskripsi', $data['deskripsi']);
             $this->db->bind(':tgl_laporan', $data['tgl_laporan']);
             $this->db->bind(':id_user', $data['id_user']);
-            $this->db->bind(':photo_path', $photo_path);
             $this->db->execute();
 
             return $this->db->rowCount();
@@ -153,6 +153,7 @@ class Laporan_model
             throw $th;
         }
     }
+
 
 
 
@@ -195,7 +196,7 @@ class Laporan_model
 
     public function ubahLaporan($data)
     {
-        try {
+    
             $query = "UPDATE trx_laporan SET 
             semester = :semester,
             nim = :nim,
@@ -203,13 +204,12 @@ class Laporan_model
             tempat = :tempat,
             deskripsi = :deskripsi,
             tgl_laporan = :tgl_laporan,
-            photo_path = :photo_path,
             id_user = :id_user
              WHERE id_laporan = :id_laporan";
 
 
             $this->db->query($query);
-            $photo_path = $this->uploadPhoto();
+            
             $this->db->bind(':semester', $data['semester']);
             $this->db->bind(':nim', $data['nim']);
             $this->db->bind(':id_frek', $data['id_frek']);
@@ -217,14 +217,12 @@ class Laporan_model
             $this->db->bind(':deskripsi', $data['deskripsi']);
             $this->db->bind(':tgl_laporan', $data['tgl_laporan']);
             $this->db->bind(':id_user', $data['id_user']);
-            $this->db->bind(':photo_path', $data['photo_path']);
-            $this->db->bind(':id_laporan', $photo_path);
+           
+            $this->db->bind(':id_laporan', $data['id_laporan']);
             $this->db->execute();
 
             return $this->db->rowCount();
-        } catch (\Throwable $th) {
-            throw $th;
-        }
+      
     }
 
 
