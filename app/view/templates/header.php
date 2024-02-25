@@ -94,6 +94,10 @@
                     <a href="<?= BASEURL; ?>/menu/edit/" class="nav-link px-0 text-white"> <span
                         class="d-none d-sm-inline">Frekuensi</span></a>
                   </li>
+                  <li>
+                    <a href="<?= BASEURL; ?>/menu/akun/" class="nav-link px-0 text-white"> <span
+                        class="d-none d-sm-inline">Akun</span></a>
+                  </li>
                 <?php } ?>
                 <li>
                   <a href="<?= BASEURL; ?>/menu/lihat/" class="nav-link px-0 text-white"> <span

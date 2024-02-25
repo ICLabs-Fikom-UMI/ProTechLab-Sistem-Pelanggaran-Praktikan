@@ -34,6 +34,20 @@ class Menu extends Controller
         }
     }
 
+    public function akun()
+    {
+        try {
+            $data["judul"] = "akun";
+            $laporanModel = $this->model('Laporan_model');
+            $data['akun'] = $laporanModel->getAkun();
+            $this->view("templates/header");
+            $this->view("menu/akun", $data);
+            $this->view("templates/footer", $data);
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+    }
+
 
 
     public function lihat()
@@ -65,6 +79,24 @@ class Menu extends Controller
             echo $th;
         }
     }
+
+    public function hapusAkun($id_user)
+    {
+        try {
+            if ($this->model("Laporan_model")->hapusDataAkun($id_user) > 0) {
+                Flasher::setFlash("berhasil", "dihapus", "success");
+                header('Location: ' . BASEURL . '/menu/akun/');
+                exit;
+            } else {
+                Flasher::setFlash("gagal", "dihapus", "danger");
+                header('Location: ' . BASEURL . '/menu/akun/');
+                exit;
+            }
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+    }
+
     public function hapusLaporan($id_laporan)
     {
 
@@ -93,6 +125,23 @@ class Menu extends Controller
             } else {
                 Flasher::setFlash("gagal", "ditambahkan karena sudah ada", "danger");
                 header('Location: ' . BASEURL . '/menu/edit/');
+                exit;
+            }
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+
+    }
+    public function tambahAkun()
+    {
+        try {
+            if ($this->model("Laporan_model")->tambahAkunBaru($_POST) > 0) {
+                Flasher::setFlash("berhasil", "ditambahkan ", "success");
+                header('Location: ' . BASEURL . '/menu/akun/');
+                exit;
+            } else {
+                Flasher::setFlash("gagal", "ditambahkan karena sudah ada", "danger");
+                header('Location: ' . BASEURL . '/menu/akun/');
                 exit;
             }
         } catch (\Throwable $th) {
@@ -135,6 +184,23 @@ class Menu extends Controller
         } else {
             Flasher::setFlash("gagal", "dirubah", "danger");
             header('Location: ' . BASEURL . '/menu/edit/');
+            exit;
+        }
+    }
+    public function getUbahAkun()
+    {
+        echo json_encode($this->model("Laporan_model")->getAkunByid($_POST["id"]));
+    }
+
+    public function AkunUbah()
+    {
+        if ($this->model("Laporan_model")->ubahAkun($_POST) > 0) {
+            Flasher::setFlash("Akun berhasil", "dirubah", "success");
+            header('Location: ' . BASEURL . '/menu/akun/');
+            exit;
+        } else {
+            Flasher::setFlash("Akun gagal", "dirubah", "danger");
+            header('Location: ' . BASEURL . '/menu/akun/');
             exit;
         }
     }

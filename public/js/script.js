@@ -63,5 +63,36 @@ $(function () {
         });
     });
 
+
+    $(".tombolTambahAkun").on("click", function () {
+        $("#judulmodalAkun").html("Tambah Akun");
+        $(".modal-body button[type=submit]").html("Tambah Data Akun");
+    });
+
+    $(".tampilModalEditAkun").on("click", function () {
+        $("#judulmodalAkun").html("Ubah Akun");
+        $(".modal-body button[type=submit]").html("Ubah Data Akun");
+        $(".modal-body form").attr("action", 'http://localhost/ProTechLab-Sistem-Pelanggaran-Praktikan/public/menu/AkunUbah');
+
+        const id = $(this).data("id");  
+        // console.log(id);
+
+        $.ajax({
+            url: 'http://localhost/ProTechLab-Sistem-Pelanggaran-Praktikan/public/menu/getUbahAkun',
+            data: { id : id },
+            method: "post",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                $("#username").val(data.username);
+                $("#nim").val(data.nim);
+                $("#role").val(data.role);
+                $("#password").val(data.password);
+                $("#id_user").val(data.id_user);
+            }
+        });
+
+    });
+
     
 });

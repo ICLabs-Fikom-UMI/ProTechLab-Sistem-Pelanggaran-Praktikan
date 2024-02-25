@@ -18,11 +18,23 @@ class Laporan_model
         $this->db->query("SELECT trx_frekuensi.id_frek, trx_frekuensi.nama_frek from trx_frekuensi ORDER BY trx_frekuensi.nama_frek ASC ");
         return $this->db->resultSet();
     }
+    public function getAkun()
+    {
+        $this->db->query("SELECT mst_user.id_user, mst_user.username, mst_user.nim, mst_user.role, mst_user.password FROM mst_user ");
+        return $this->db->resultSet();
+    }
+    
 
     public function getFrekuensiByid($id_frek)
     {
         $this->db->query("SELECT * FROM trx_frekuensi " . $this->table . " WHERE id_frek = :id_frek");
         $this->db->bind(":id_frek", $id_frek);
+        return $this->db->single();
+    }
+    public function getAkunByid($id_user)
+    {
+        $this->db->query("SELECT * FROM mst_user  WHERE id_user = :id_user");
+        $this->db->bind(":id_user", $id_user);
         return $this->db->single();
     }
 
@@ -137,7 +149,7 @@ class Laporan_model
     {
         try {
             $insertQuery = "INSERT INTO trx_laporan (semester, nim, id_frek, tempat, deskripsi, tgl_laporan, id_user) VALUES (:semester, :nim, :id_frek, :tempat, :deskripsi, :tgl_laporan, :id_user)";
-      
+
             $this->db->query($insertQuery);
             $this->db->bind(':semester', $data['semester']);
             $this->db->bind(':nim', $data['nim']);
@@ -153,6 +165,25 @@ class Laporan_model
             throw $th;
         }
     }
+    public function tambahAkunBaru($data)
+    {
+        try {
+            $insertQuery = "INSERT INTO mst_user (username, nim,  role, password) 
+                        VALUES (:username, :nim,  :role, :password)";
+
+            $this->db->query($insertQuery);
+            $this->db->bind(':username', $data['username']);
+            $this->db->bind(':nim', $data['nim']);
+            $this->db->bind(':role', $data['role']);
+            $this->db->bind(':password', $data['password']);
+            $this->db->execute();
+
+            return $this->db->rowCount();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
 
 
 
@@ -166,6 +197,20 @@ class Laporan_model
 
         $this->db->execute();
         return $this->db->rowCount();
+    }
+
+    public function hapusDataAkun($id_user)
+    {
+        try {
+        $query = "DELETE FROM mst_user WHERE id_user = :id_user";
+        $this->db->query($query);
+        $this->db->bind("id_user", $id_user);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    } catch (\Throwable $th) {
+        throw $th;
+    }
     }
 
     public function hapusDataLaporan($id_laporan)
@@ -194,10 +239,27 @@ class Laporan_model
 
     }
 
+    public function ubahAkun($data)
+    {
+        $query = "UPDATE mst_user SET username = :username, nim = :nim, role = :role , password = :password WHERE id_user = :id_user";
+        $this->db->query($query);
+
+        $this->db->bind(':username', $data['username']);
+        $this->db->bind(':nim', $data['nim']);
+        $this->db->bind(':role', $data['role']);
+        $this->db->bind(':password', $data['password']);
+        $this->db->bind(':id_user', $data['id_user']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+
+    }
+
     public function ubahLaporan($data)
     {
-    
-            $query = "UPDATE trx_laporan SET 
+
+        $query = "UPDATE trx_laporan SET 
             semester = :semester,
             nim = :nim,
             id_frek = :id_frek,
@@ -208,21 +270,21 @@ class Laporan_model
              WHERE id_laporan = :id_laporan";
 
 
-            $this->db->query($query);
-            
-            $this->db->bind(':semester', $data['semester']);
-            $this->db->bind(':nim', $data['nim']);
-            $this->db->bind(':id_frek', $data['id_frek']);
-            $this->db->bind(':tempat', $data['tempat']);
-            $this->db->bind(':deskripsi', $data['deskripsi']);
-            $this->db->bind(':tgl_laporan', $data['tgl_laporan']);
-            $this->db->bind(':id_user', $data['id_user']);
-           
-            $this->db->bind(':id_laporan', $data['id_laporan']);
-            $this->db->execute();
+        $this->db->query($query);
 
-            return $this->db->rowCount();
-      
+        $this->db->bind(':semester', $data['semester']);
+        $this->db->bind(':nim', $data['nim']);
+        $this->db->bind(':id_frek', $data['id_frek']);
+        $this->db->bind(':tempat', $data['tempat']);
+        $this->db->bind(':deskripsi', $data['deskripsi']);
+        $this->db->bind(':tgl_laporan', $data['tgl_laporan']);
+        $this->db->bind(':id_user', $data['id_user']);
+
+        $this->db->bind(':id_laporan', $data['id_laporan']);
+        $this->db->execute();
+
+        return $this->db->rowCount();
+
     }
 
 
