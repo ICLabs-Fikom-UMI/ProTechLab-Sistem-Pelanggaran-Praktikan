@@ -22,19 +22,21 @@
 <!-- Your Custom Script -->
 <script src="<?= BASEURL; ?>/js/script.js"></script>
 
+
 <script>
     $(document).ready(function () {
         
         $('#myTable').DataTable({
             layout: {
                 topStart: {
-                    buttons: [ 'excel', 'pdf', 'colvis']
+                    buttons: [ 'copy', 'excel', 'pdf', 'colvis']
                 }
             }
         });
     });
 
 </script>
+
 
 
 
@@ -117,6 +119,21 @@
                         <div class="mb-3">
                             <label for="tanggal" class="form-label">tanggal</label>
                             <input type="date" class="form-control" id="tgl_laporan" name="tgl_laporan">
+                        </div>
+                        <div class="mb-3">
+                            <label for="photo_path" class="form-label">Foto</label>
+                            <input type="file" class="form-control" id="photo_path" name="photo_path">
+                        </div>
+                        <div class="form-group mb-1">
+                            <label for="id_status" class="form-label">Status</label>
+                            <select name="id_status" class="form-select ">
+                                <option>Pilih Status</option>
+                                <?php
+                                foreach ($data['statusOptions'] as $status) {
+                                    echo "<option value='{$status['id_status']}'>{$status['nama_status']}</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
 
 

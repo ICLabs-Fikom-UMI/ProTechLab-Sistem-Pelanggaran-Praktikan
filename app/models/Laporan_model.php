@@ -48,7 +48,7 @@ class Laporan_model
 
     public function getStatus()
     {
-        $this->db->query("SELECT mst_status.nama_status FROM mst_status");
+        $this->db->query("SELECT id_status, nama_status FROM mst_status");
         return $this->db->resultSet();
     }
 
@@ -70,6 +70,8 @@ class Laporan_model
             trx_laporan.tempat,
             trx_laporan.deskripsi,
             trx_laporan.tgl_laporan,
+            mst_status.nama_status,
+            trx_laporan.photo_path,
             mst_user.username
         FROM
             trx_laporan
@@ -77,6 +79,8 @@ class Laporan_model
             trx_frekuensi ON trx_laporan.id_frek = trx_frekuensi.id_frek
         INNER JOIN
             mst_user ON trx_laporan.id_user = mst_user.id_user
+        INNER JOIN
+            mst_status ON trx_laporan.id_status = mst_status.id_status
         ORDER BY
             trx_laporan.tgl_laporan DESC
         ");
@@ -135,7 +139,7 @@ class Laporan_model
         $fileError = $file['error'];
 
         if ($fileError === UPLOAD_ERR_OK) {
-            $destination = 'img/uploads/' . $fileName;
+            $destination = '/img/uploads/' . $fileName;
             move_uploaded_file($fileTmpName, $destination);
             return $destination;
         } else {
@@ -148,8 +152,9 @@ class Laporan_model
     public function tambahDataLapor($data)
     {
         try {
-            $insertQuery = "INSERT INTO trx_laporan (semester, nim, id_frek, tempat, deskripsi, tgl_laporan, id_user) VALUES (:semester, :nim, :id_frek, :tempat, :deskripsi, :tgl_laporan, :id_user)";
+            $insertQuery = "INSERT INTO trx_laporan (semester, nim, id_frek, tempat, deskripsi, tgl_laporan, id_user, id_status, photo_path) VALUES (:semester, :nim, :id_frek, :tempat, :deskripsi, :tgl_laporan, :id_user, :id_status, :photo_path)";
 
+            $photo_path = $this->uploadPhoto();
             $this->db->query($insertQuery);
             $this->db->bind(':semester', $data['semester']);
             $this->db->bind(':nim', $data['nim']);
@@ -158,6 +163,8 @@ class Laporan_model
             $this->db->bind(':deskripsi', $data['deskripsi']);
             $this->db->bind(':tgl_laporan', $data['tgl_laporan']);
             $this->db->bind(':id_user', $data['id_user']);
+            $this->db->bind(':id_status', $data['id_status']);
+            $this->db->bind(':photo_path', $photo_path);
             $this->db->execute();
 
             return $this->db->rowCount();
@@ -258,33 +265,49 @@ class Laporan_model
 
     public function ubahLaporan($data)
     {
+            if ($_FILES['photo_path']['error'] === UPLOAD_ERR_NO_FILE) {
+                $photo_path = $this->getPhotoPathByID($data['ID_User']);
+            } else {
+                $photo_path = $this->uploadPhoto();
+            }
+            
+            
+            $query = "UPDATE trx_laporan SET 
+                    semester = :semester,
+                    nim = :nim,
+                    id_frek = :id_frek,
+                    tempat = :tempat,
+                    deskripsi = :deskripsi,
+                    tgl_laporan = :tgl_laporan,
+                    id_user = :id_user,
+                    id_status = :id_status,
+                    photo_path = :photo_path
+                    WHERE id_laporan = :id_laporan";
 
-        $query = "UPDATE trx_laporan SET 
-            semester = :semester,
-            nim = :nim,
-            id_frek = :id_frek,
-            tempat = :tempat,
-            deskripsi = :deskripsi,
-            tgl_laporan = :tgl_laporan,
-            id_user = :id_user
-             WHERE id_laporan = :id_laporan";
 
+            $this->db->query($query);
 
-        $this->db->query($query);
-
-        $this->db->bind(':semester', $data['semester']);
-        $this->db->bind(':nim', $data['nim']);
-        $this->db->bind(':id_frek', $data['id_frek']);
-        $this->db->bind(':tempat', $data['tempat']);
-        $this->db->bind(':deskripsi', $data['deskripsi']);
-        $this->db->bind(':tgl_laporan', $data['tgl_laporan']);
-        $this->db->bind(':id_user', $data['id_user']);
+            $this->db->bind(':semester', $data['semester']);
+            $this->db->bind(':nim', $data['nim']);
+            $this->db->bind(':id_frek', $data['id_frek']);
+            $this->db->bind(':tempat', $data['tempat']);
+            $this->db->bind(':deskripsi', $data['deskripsi']);
+            $this->db->bind(':tgl_laporan', $data['tgl_laporan']);
+            $this->db->bind(':id_user', $data['id_user']);
+            $this->db->bind(':id_status', $data['id_status']);
+            $this->db->bind('photo_path', $photo_path);
 
         $this->db->bind(':id_laporan', $data['id_laporan']);
         $this->db->execute();
 
         return $this->db->rowCount();
 
+    }
+    private function getPhotoPathByID($userID) {
+        $this->db->query("SELECT photo_path FROM trx_laporan WHERE id_laporan = :id_laporan");
+        $this->db->bind(':id_laporan', $userID);
+        $result = $this->db->single();
+        return $result['photo_path'];
     }
 
 

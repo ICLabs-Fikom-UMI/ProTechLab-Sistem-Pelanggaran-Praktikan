@@ -1,10 +1,13 @@
 <!-- Content Section -->
-<div class="container mt-4">
+<div class="container mt-1">
   <div class="row">
     <div class="col-md-8">
-  
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script><lottie-player src="https://lottie.host/a2caaada-f09d-42aa-a546-de08e92f9aa7/9rb8RzhnvY.json" background="##fff" speed="1" style="width: 450px; height: 450px" loop  autoplay direction="1" mode="normal" ></lottie-player>
-   
+
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+      <lottie-player src="https://lottie.host/a2caaada-f09d-42aa-a546-de08e92f9aa7/9rb8RzhnvY.json" background="##fff"
+        speed="1" style="width: 480px; height: 480px" loop autoplay direction="1" mode="normal">
+      </lottie-player>
+
       <h2>Selamat Datang di ProTechLab</h2>
       <p>
         ProTechLab adalah platform yang didedikasikan untuk pelaporan pelanggaran dan pengamatan di laboratorium teknis

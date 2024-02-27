@@ -9,6 +9,7 @@ class Menu extends Controller
             $data["judul"] = "tindak";
             $laporanModel = $this->model('Laporan_model');
             $data["lapor"] = $this->model("Laporan_model")->getAllLaporanTindak();
+            $data["statusOptions"] = $this->model("Laporan_model")->getStatus();
             $data["frekuensi"] = $laporanModel->getFrekuensi();
             $data["status"] = $this->model("Laporan_model")->getStatus();
             $this->view("templates/header");
@@ -56,6 +57,7 @@ class Menu extends Controller
         $data["lapor"] = $this->model("Laporan_model")->getAllLaporanLihat();
         $data["status"] = $this->model("Laporan_model")->getStatus();
         $data["frekuensi"] = $this->model("Laporan_model")->getFrekuensi();
+        $data["statusOptions"] = $this->model("Laporan_model")->getStatus();
         $this->view("templates/header");
         $this->view("menu/lihat", $data);
         $this->view("templates/footer", $data);
@@ -149,7 +151,6 @@ class Menu extends Controller
         }
 
     }
-
     public function tambahLaporanLihat()
     {
 
@@ -169,7 +170,6 @@ class Menu extends Controller
         }
 
     }
-
     public function getUbah()
     {
         echo json_encode($this->model("Laporan_model")->getFrekuensiByid($_POST["id"]));

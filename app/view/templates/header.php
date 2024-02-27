@@ -23,6 +23,12 @@
       z-index: 99;
       height: 90px;
     }
+
+    lottie-player {
+      position: relative;
+      left: 50px;
+    }
+
   </style>
 </head>
 
@@ -40,10 +46,19 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="dropdown">
+        <?php
+        $loginText = (isset($_SESSION['role'])) ? 'Halo ' . $_SESSION['username'] : 'Log-in';
+        ?>
+
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
           data-bs-toggle="dropdown" aria-expanded="false">
-          <span class="d-none d-sm-inline mx-1">Log-in</span>
+          <span class="d-none d-sm-inline mx-1">
+            <?= $loginText; ?>
+          </span>
         </a>
+
+
+
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
           <div class="divider dropdown-divider"></div>
           <li class="d-flex align-items-center">

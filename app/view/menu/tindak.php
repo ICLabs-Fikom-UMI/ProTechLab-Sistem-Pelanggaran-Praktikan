@@ -31,6 +31,7 @@
                         <th>Tanggal Pelaporan</th>
                         <th>pelapor</th>
                         <th>Status</th>
+                        <th>foto</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -66,17 +67,18 @@
                             </td>
                             <td>
                                 <!-- Tambahkan dropdown status di sini -->
-                                <select class="form-select form-select-sm" aria-label="Small select example" name="nama_status">
+                                <!-- <select class="form-select form-select-sm" aria-label="Small select example" name="nama_status">
                                     <?php foreach ($data['status'] as $status): ?>
-                                        <option value="<?= $status['id_status']; ?>">
+                                        <option value="<?= $status['id_status'] ; ?>">
                                             <?= $status['nama_status']; ?>
                                         </option>
                                     <?php endforeach; ?>
-                                </select>
+                                </select> -->
+                                <?= $lapor['nama_status'];?>
                             </td>
+                            <td class="text-center"><img src="<?= BASEURL; ?><?= $user['photo_path'] ?>" alt="Foto" style="max-width: 100px; max-height: 100px;"></td>
 
                             <td>
-                                <!-- Tambahkan tautan aksi di sini -->
                                 <a href="<?= BASEURL; ?>/menu/hapusLaporan/<?= $lapor["id_laporan"]; ?>"
                                     class="badge text-danger mx-2"
                                     onclick="return confirm('Apakah Anda yakin ingin menghapus laporan ini?')">hapus</a>
@@ -84,7 +86,6 @@
                                 <a href="<?= BASEURL; ?>/menu/editLaporan/<?= $lapor["id_laporan"]; ?>"
                                     class="badge text-success mx-2 tampilModalEditLaporan" data-bs-toggle="modal"
                                     data-bs-target="#formModal" data-id="<?= $lapor["id_laporan"]; ?>">edit</a>
-                                <!-- Anda dapat menambahkan aksi lainnya sesuai kebutuhan -->
                             </td>
                         </tr>
                     <?php endforeach; ?>
