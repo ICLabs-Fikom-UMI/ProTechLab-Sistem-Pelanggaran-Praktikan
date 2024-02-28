@@ -142,17 +142,11 @@ class Laporan_model
         $file = $_FILES['photo_path'] ;
         $fileName = $file['name'];
         $fileTmpName = $file['tmp_name'];
-        $fileError = $file['error'];
 
         $destination = 'img/uploads/' . $fileName;
             move_uploaded_file($fileTmpName, $destination);
             return $destination;
 
-        // if ($fileError === UPLOAD_ERR_OK) {
-            
-        // } else {
-        //     return null;
-        // }
     }
 
 
@@ -275,11 +269,9 @@ class Laporan_model
 
     public function ubahLaporan($data)
     {
-            if ($_FILES['photo_path']['error'] === UPLOAD_ERR_NO_FILE) {
-                $photo_path = $this->getPhotoPathByID($data['ID_User']);
-            } else {
-                $photo_path = $this->uploadPhoto();
-            }
+           
+            $photo_path = $this->uploadPhoto();
+            
             
             
             $query = "UPDATE trx_laporan SET 

@@ -73,9 +73,8 @@
                                 <?= $lapor['nama_status']; ?>
                             </td>
 
-                            <td class="text-center"><img src="<?= BASEURL . '/' . $lapor['photo_path'] ?>" alt="Foto"
-                                    style="max-width: 100px; max-height: 100px;">
-                            </td>
+                            <td class="text-center"><img src="<?= BASEURL; ?>/<?= $lapor['photo_path'] ?>" alt="foto" style="max-width: 100px; max-height: 100px;"></td>
+
 
                             <td>
                                 <a href="<?= BASEURL; ?>/menu/hapusLaporan/<?= $lapor["id_laporan"]; ?>"

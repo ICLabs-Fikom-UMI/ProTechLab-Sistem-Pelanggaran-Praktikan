@@ -24,16 +24,15 @@
 
 
 <script>
-    $(document).ready(function () {
-        
-        $('#myTable').DataTable({
-            layout: {
-                topStart: {
-                    buttons: [ 'copy', 'excel', 'pdf', 'colvis']
-                }
-            }
-        });
-    });
+   $(document).ready(function () {
+  $('#myTable').DataTable({
+      layout: {
+          topStart: {
+              buttons: ['copy', 'excel', 'pdf', 'colvis']
+          }
+      }
+  });
+});
 
 </script>
 
@@ -124,10 +123,10 @@
                             <input type="date" class="form-control" id="tgl_laporan" name="tgl_laporan">
                         </div>
                         <div class="mb-3">
-                            <label for="foto" class="form-label">Foto</label>
-                            <input type="file" class="form-control" id="foto" name="foto">
+                            <label for="photo_path" class="form-label">Foto</label>
+                            <input type="file" class="form-control" id="photo_path" name="photo_path">
                         </div>
-                        
+
                         <div class="form-group mb-1">
                             <label for="id_status" class="form-label">Status</label>
                             <select name="id_status" class="form-select " id="id_status">
@@ -140,13 +139,10 @@
                             </select>
                         </div>
 
-    
-
-
 
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-danger">Lapor</button>
                 </form>
             </div>
