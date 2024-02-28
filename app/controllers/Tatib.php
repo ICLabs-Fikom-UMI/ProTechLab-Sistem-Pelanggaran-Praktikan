@@ -4,7 +4,7 @@ class Tatib extends Controller{
     public function index(){
         $data["judul"] = "Tata Tertib";
         $this->view("templates/header");
-        $this->view("tatib/index");
+        $this->view("tatib/index", $data);
         $this->view("templates/footer");
     }
 
@@ -21,4 +21,6 @@ class Tatib extends Controller{
         $this->view("tatib/edittatib");
         $this->view("templates/footer");
     }
+
+    
 }

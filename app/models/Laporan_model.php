@@ -23,6 +23,13 @@ class Laporan_model
         $this->db->query("SELECT mst_user.id_user, mst_user.username, mst_user.nim, mst_user.role, mst_user.password FROM mst_user ");
         return $this->db->resultSet();
     }
+
+    public function getStatus()
+    {
+        $this->db->query("SELECT id_status, nama_status FROM mst_status");
+        return $this->db->resultSet();
+    }
+
     
 
     public function getFrekuensiByid($id_frek)
@@ -44,12 +51,11 @@ class Laporan_model
         $this->db->bind(":id_laporan", $id_laporan);
         return $this->db->single();
     }
-
-
-    public function getStatus()
+    public function getStatusByid($id_status)
     {
-        $this->db->query("SELECT id_status, nama_status FROM mst_status");
-        return $this->db->resultSet();
+        $this->db->query("SELECT * FROM mst_status WHERE id_status = :id_status");
+        $this->db->bind(":id_status", $id_status);
+        return $this->db->single();
     }
 
 
@@ -133,18 +139,20 @@ class Laporan_model
     }
     private function uploadPhoto()
     {
-        $file = $_FILES['photo_path'];
+        $file = $_FILES['photo_path'] ;
         $fileName = $file['name'];
         $fileTmpName = $file['tmp_name'];
         $fileError = $file['error'];
 
-        if ($fileError === UPLOAD_ERR_OK) {
-            $destination = '/img/uploads/' . $fileName;
+        $destination = 'img/uploads/' . $fileName;
             move_uploaded_file($fileTmpName, $destination);
             return $destination;
-        } else {
-            return null;
-        }
+
+        // if ($fileError === UPLOAD_ERR_OK) {
+            
+        // } else {
+        //     return null;
+        // }
     }
 
 
@@ -152,8 +160,8 @@ class Laporan_model
     public function tambahDataLapor($data)
     {
         try {
-            $insertQuery = "INSERT INTO trx_laporan (semester, nim, id_frek, tempat, deskripsi, tgl_laporan, id_user, id_status, photo_path) VALUES (:semester, :nim, :id_frek, :tempat, :deskripsi, :tgl_laporan, :id_user, :id_status, :photo_path)";
 
+            $insertQuery = "INSERT INTO trx_laporan (semester, nim, id_frek, tempat, deskripsi, tgl_laporan, id_user, id_status, photo_path) VALUES (:semester, :nim, :id_frek, :tempat, :deskripsi, :tgl_laporan, :id_user, :id_status, :photo_path)";
             $photo_path = $this->uploadPhoto();
             $this->db->query($insertQuery);
             $this->db->bind(':semester', $data['semester']);
@@ -163,6 +171,7 @@ class Laporan_model
             $this->db->bind(':deskripsi', $data['deskripsi']);
             $this->db->bind(':tgl_laporan', $data['tgl_laporan']);
             $this->db->bind(':id_user', $data['id_user']);
+           
             $this->db->bind(':id_status', $data['id_status']);
             $this->db->bind(':photo_path', $photo_path);
             $this->db->execute();
@@ -172,6 +181,7 @@ class Laporan_model
             throw $th;
         }
     }
+
     public function tambahAkunBaru($data)
     {
         try {

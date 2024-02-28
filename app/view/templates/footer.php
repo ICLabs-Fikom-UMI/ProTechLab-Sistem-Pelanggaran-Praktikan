@@ -40,6 +40,9 @@
 
 
 
+
+
+
 </div>
 </div>
 </div>
@@ -121,12 +124,13 @@
                             <input type="date" class="form-control" id="tgl_laporan" name="tgl_laporan">
                         </div>
                         <div class="mb-3">
-                            <label for="photo_path" class="form-label">Foto</label>
-                            <input type="file" class="form-control" id="photo_path" name="photo_path">
+                            <label for="foto" class="form-label">Foto</label>
+                            <input type="file" class="form-control" id="foto" name="foto">
                         </div>
+                        
                         <div class="form-group mb-1">
                             <label for="id_status" class="form-label">Status</label>
-                            <select name="id_status" class="form-select ">
+                            <select name="id_status" class="form-select " id="id_status">
                                 <option>Pilih Status</option>
                                 <?php
                                 foreach ($data['statusOptions'] as $status) {
@@ -135,6 +139,8 @@
                                 ?>
                             </select>
                         </div>
+
+    
 
 
 

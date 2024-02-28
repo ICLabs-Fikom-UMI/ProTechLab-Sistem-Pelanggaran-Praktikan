@@ -10,6 +10,9 @@
             </div>
         </div>
 
+
+
+        <div class=" mx-auto mt-2 shadow-lg rounded-4 p-4">
         <div class="d-flex justify-content-between align-items-center p-5 ">
             <h1>Tampilan lihat</h1>
             <?php if ($_SESSION['role'] == 'asisten' || $_SESSION['role'] == 'admin') { ?>
@@ -19,12 +22,6 @@
                     </button>
                 <?php } ?>
         </div>
-        
-
-
-
-        <div class=" mx-auto mt-2 shadow-lg rounded-4 p-4">
-                
             <table id="myTable" class="table table-striped" style="width:100%">
                 
                 <thead>

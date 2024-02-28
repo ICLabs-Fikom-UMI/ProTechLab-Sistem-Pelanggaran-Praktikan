@@ -153,8 +153,6 @@ class Menu extends Controller
     }
     public function tambahLaporanLihat()
     {
-
-
         try {
             if ($this->model("Laporan_model")->tambahDataLapor($_POST) > 0) {
                 Flasher::setFlash("berhasil", "ditambahkan ", "success");

@@ -1,3 +1,5 @@
+<!-- isi konten -->
+
 
 <div class="overflow-scroll" style="max-height: 85vh; overflow-x: hidden;">
 
@@ -9,16 +11,18 @@
             </div>
         </div>
 
-        <div class="d-flex justify-content-between align-items-center p-5 ">
-            <h1>Daftar Tindak Lanjut</h1>
-            <?php if ($_SESSION['role'] == 'asisten' || $_SESSION['role'] == 'admin') { ?>
-                <button type="button" class="btn btn-danger tombolLapor" data-bs-toggle="modal" data-bs-target="#formModal">
-                    Lapor
-                </button>
-            <?php } ?>
-        </div>
+
 
         <div class=" mx-auto mt-3 shadow-lg rounded-4 p-4">
+            <div class="d-flex justify-content-between align-items-center p-5 ">
+                <h1>Daftar Tindak Lanjut</h1>
+                <?php if ($_SESSION['role'] == 'asisten' || $_SESSION['role'] == 'admin') { ?>
+                    <button type="button" class="btn btn-danger tombolLapor" data-bs-toggle="modal"
+                        data-bs-target="#formModal">
+                        Lapor
+                    </button>
+                <?php } ?>
+            </div>
             <table id="myTable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
@@ -31,7 +35,7 @@
                         <th>Tanggal Pelaporan</th>
                         <th>pelapor</th>
                         <th>Status</th>
-                        <th>foto</th>
+                        <th>Foto</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -66,17 +70,12 @@
                                 <?= $lapor["username"]; ?>
                             </td>
                             <td>
-                                <!-- Tambahkan dropdown status di sini -->
-                                <!-- <select class="form-select form-select-sm" aria-label="Small select example" name="nama_status">
-                                    <?php foreach ($data['status'] as $status): ?>
-                                        <option value="<?= $status['id_status'] ; ?>">
-                                            <?= $status['nama_status']; ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select> -->
-                                <?= $lapor['nama_status'];?>
+                                <?= $lapor['nama_status']; ?>
                             </td>
-                            <td class="text-center"><img src="<?= BASEURL; ?><?= $user['photo_path'] ?>" alt="Foto" style="max-width: 100px; max-height: 100px;"></td>
+
+                            <td class="text-center"><img src="<?= BASEURL . '/' . $lapor['photo_path'] ?>" alt="Foto"
+                                    style="max-width: 100px; max-height: 100px;">
+                            </td>
 
                             <td>
                                 <a href="<?= BASEURL; ?>/menu/hapusLaporan/<?= $lapor["id_laporan"]; ?>"
@@ -96,4 +95,3 @@
 
     </div>
 </div>
-
