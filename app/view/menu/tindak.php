@@ -4,16 +4,15 @@
 <div class="overflow-scroll" style="max-height: 85vh; overflow-x: hidden;">
 
 
-    <div class="col py-3">
+    <div class="col ">
+        
+
+        <div class=" mx-auto shadow-lg rounded-4 p-4">
         <div class="row">
             <div class="col-lg-6">
                 <?php Flasher::flash() ?>
             </div>
         </div>
-
-
-
-        <div class=" mx-auto mt-3 shadow-lg rounded-4 p-4">
             <div class="d-flex justify-content-between align-items-center p-5 ">
                 <h1>Daftar Tindak Lanjut</h1>
                 <?php if ($_SESSION['role'] == 'asisten' || $_SESSION['role'] == 'admin') { ?>
@@ -63,6 +62,7 @@
                             <td>
                                 <?= $lapor["deskripsi"]; ?>
                             </td>
+
                             <td>
                                 <?= $lapor["tgl_laporan"]; ?>
                             </td>
@@ -70,12 +70,36 @@
                                 <?= $lapor["username"]; ?>
                             </td>
                             <td>
-                                <?= $lapor['nama_status']; ?>
+                                <?php
+                                $status = $lapor['nama_status'];
+                                $style = '';
+
+                                switch ($status) {
+                                    case 'Peringatan':
+                                        $style = 'background-color: gray; color: white;';
+                                        break;
+                                    case 'Peringatan 2':
+                                        $style = 'background-color: black; color: white;';
+                                        break;
+                                    case 'Menghadap':
+                                        $style = 'background-color: red; color: white;';
+                                        break;
+                                    default:
+                                        $style = 'background-color: white; color: white;';
+                                        break;
+                                }
+                                ?>
+
+                                <span
+                                    style="padding: 5px 8px;  cursor: pointer; display: inline-block; text-align: center; text-decoration: none; border-radius: 5px; <?= $style; ?>">
+                                    <?= $status; ?>
+                                </span>
                             </td>
 
-                            <td class="text-center"><img src="<?= BASEURL; ?>/<?= $lapor['photo_path'] ?>" alt="foto" style="max-width: 100px; max-height: 100px;"></td>
 
 
+                            <td class="text-center"><img src="<?= BASEURL; ?>/<?= $lapor['photo_path'] ?>" alt="foto"
+                                    style="max-width: 100px; max-height: 100px;"></td>
                             <td>
                                 <a href="<?= BASEURL; ?>/menu/hapusLaporan/<?= $lapor["id_laporan"]; ?>"
                                     class="badge text-danger mx-2"
@@ -84,13 +108,39 @@
                                 <a href="<?= BASEURL; ?>/menu/editLaporan/<?= $lapor["id_laporan"]; ?>"
                                     class="badge text-success mx-2 tampilModalEditLaporan" data-bs-toggle="modal"
                                     data-bs-target="#formModal" data-id="<?= $lapor["id_laporan"]; ?>">edit</a>
+
+                                <a href="<?= BASEURL; ?>/menu/detailLaporan/<?= $lapor["id_laporan"]; ?>"
+                                    class="badge text-primary mx-2 tampilModalDetailLaporan" data-bs-toggle="modal"
+                                    data-bs-target="#detailModal" data-id="<?= $lapor["id_laporan"]; ?>">detail</a>
+
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
 
             </table>
+
+        </div>
+
+        <!-- Modal Detail -->
+        <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="detailModalLabel">Detail Laporan</h5>
+                    </div>
+                    <div class="modal-body">
+
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
 
     </div>
-</div>

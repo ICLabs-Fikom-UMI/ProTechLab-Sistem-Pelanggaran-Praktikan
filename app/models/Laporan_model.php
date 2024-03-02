@@ -45,12 +45,14 @@ class Laporan_model
         return $this->db->single();
     }
 
-    public function getLaporanByid($id_laporan)
+    public function getAllLaporanByid($id_laporan)
     {
         $this->db->query("SELECT * FROM trx_laporan WHERE id_laporan = :id_laporan");
         $this->db->bind(":id_laporan", $id_laporan);
         return $this->db->single();
     }
+
+
     public function getStatusByid($id_status)
     {
         $this->db->query("SELECT * FROM mst_status WHERE id_status = :id_status");
@@ -270,9 +272,6 @@ class Laporan_model
     public function ubahLaporan($data)
     {
            
-            $photo_path = $this->uploadPhoto();
-            
-            
             
             $query = "UPDATE trx_laporan SET 
                     semester = :semester,
@@ -285,6 +284,7 @@ class Laporan_model
                     id_status = :id_status,
                     photo_path = :photo_path
                     WHERE id_laporan = :id_laporan";
+            $photo_path = $this->uploadPhoto();
 
 
             $this->db->query($query);

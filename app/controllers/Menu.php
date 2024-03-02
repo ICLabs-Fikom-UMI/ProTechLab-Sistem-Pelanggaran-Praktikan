@@ -205,7 +205,7 @@ class Menu extends Controller
 
     public function laporUbah()
     {
-        echo json_encode($this->model("Laporan_model")->getLaporanByid($_POST["id"]));
+        echo json_encode($this->model("Laporan_model")->getAllLaporanByid($_POST["id"]));
     }
 
     public function editLaporan()
@@ -223,6 +223,11 @@ class Menu extends Controller
         } catch (\Throwable $th) {
             echo $th;
         }
+    }
+
+    public function laporDetail()
+    {
+        echo json_encode($this->model("Laporan_model")->getLaporanByid($_POST["id"]));
     }
 
 
