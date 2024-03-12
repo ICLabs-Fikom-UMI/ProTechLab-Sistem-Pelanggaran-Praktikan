@@ -34,6 +34,10 @@
   });
 });
 
+setTimeout(function () {
+    $("#myAlert").alert('close');
+}, 3000);
+
 </script>
 
 
