@@ -5,14 +5,14 @@
 
 
     <div class="col ">
-        
+
 
         <div class=" mx-auto shadow-lg rounded-4 p-4">
-        <div class="row">
-            <div class="col-lg-6">
-                <?php Flasher::flash() ?>
+            <div class="row">
+                <div class="col-lg-6">
+                    <?php Flasher::flash() ?>
+                </div>
             </div>
-        </div>
             <div class="d-flex justify-content-between align-items-center p-5 ">
                 <h1>Daftar Tindak Lanjut</h1>
                 <?php if ($_SESSION['role'] == 'asisten' || $_SESSION['role'] == 'admin') { ?>
@@ -98,7 +98,7 @@
 
 
 
-                            <td class="text-center"><img src="<?= BASEURL; ?>/<?= $lapor['photo_path'] ?>" alt="foto"
+                            <td class="text-center"><img src="<?= BASEURL; ?>/<?= $lapor['photo_path'] ?>" alt="no foto"
                                     style="max-width: 100px; max-height: 100px;"></td>
                             <td>
                                 <a href="<?= BASEURL; ?>/menu/hapusLaporan/<?= $lapor["id_laporan"]; ?>"
@@ -111,36 +111,61 @@
 
                                 <a href="<?= BASEURL; ?>/menu/detailLaporan/<?= $lapor["id_laporan"]; ?>"
                                     class="badge text-primary mx-2 tampilModalDetailLaporan" data-bs-toggle="modal"
-                                    data-bs-target="#detailModal" data-id="<?= $lapor["id_laporan"]; ?>">detail</a>
+                                    data-bs-target="#detailModal<?= $lapor['id_laporan'] ?>"
+                                    data-id="<?= $lapor["id_laporan"]; ?>">detail</a>
 
                             </td>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-
-            </table>
-
-        </div>
-
-        <!-- Modal Detail -->
-        <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="detailModalLabel">Detail Laporan</h5>
-                    </div>
-                    <div class="modal-body">
-
-
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <!-- Modal Detail -->
+                        <div class="modal fade" id="detailModal<?= $lapor['id_laporan'] ?>" tabindex="-1"
+                            aria-labelledby="detailModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="detailModalLabel">Detail Laporan</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>NIM:
+                                            <?= $lapor['nim'] ?>
+                                        </p>
+                                        <p>Semester:
+                                            <?= $lapor['semester'] ?>
+                                        </p>
+                                        <p>Frekuensi:
+                                            <?= $lapor['nama_frek'] ?>
+                                        </p>
+                                        <p>Tempat:
+                                            <?= $lapor['tempat'] ?>
+                                        </p>
+                                        <p>Deskripsi:
+                                            <?= $lapor['deskripsi'] ?>
+                                        </p>
+                                        <p>Tanggal Pelaporan:
+                                            <?= $lapor['tgl_laporan'] ?>
+                                        </p>
+                                        <p>Pelapor:
+                                            <?= $lapor['username'] ?>
+                                        </p>
+                                        <p>Status:
+                                            <?= $lapor['nama_status'] ?>
+                                        </p>
+                                        <p>Foto: <img src="<?= BASEURL; ?>/<?= $lapor['photo_path'] ?>" alt="Foto"
+                                                style="max-width: 100px; max-height: 100px;"></p>
+                                        <!-- Tambahkan informasi detail lainnya sesuai kebutuhan -->
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
             </div>
+        <?php endforeach; ?>
+        </tbody>
 
-
-        </div>
+        </table>
 
     </div>
+
+</div>
