@@ -30,7 +30,7 @@ class Laporan_model
         return $this->db->resultSet();
     }
 
-    
+
 
     public function getFrekuensiByid($id_frek)
     {
@@ -141,13 +141,13 @@ class Laporan_model
     }
     private function uploadPhoto()
     {
-        $file = $_FILES['photo_path'] ;
+        $file = $_FILES['photo_path'];
         $fileName = $file['name'];
         $fileTmpName = $file['tmp_name'];
 
         $destination = 'img/uploads/' . $fileName;
-            move_uploaded_file($fileTmpName, $destination);
-            return $destination;
+        move_uploaded_file($fileTmpName, $destination);
+        return $destination;
 
     }
 
@@ -167,7 +167,7 @@ class Laporan_model
             $this->db->bind(':deskripsi', $data['deskripsi']);
             $this->db->bind(':tgl_laporan', $data['tgl_laporan']);
             $this->db->bind(':id_user', $data['id_user']);
-           
+
             $this->db->bind(':id_status', $data['id_status']);
             $this->db->bind(':photo_path', $photo_path);
             $this->db->execute();
@@ -215,19 +215,27 @@ class Laporan_model
     public function hapusDataAkun($id_user)
     {
         try {
-        $query = "DELETE FROM mst_user WHERE id_user = :id_user";
-        $this->db->query($query);
-        $this->db->bind("id_user", $id_user);
+            $query = "DELETE FROM mst_user WHERE id_user = :id_user";
+            $this->db->query($query);
+            $this->db->bind("id_user", $id_user);
 
-        $this->db->execute();
-        return $this->db->rowCount();
-    } catch (\Throwable $th) {
-        throw $th;
-    }
+            $this->db->execute();
+            return $this->db->rowCount();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     public function hapusDataLaporan($id_laporan)
     {
+        $this->db->query("SELECT (photo_path) FROM trx_laporan WHERE id_laporan = :id_laporan;");
+        $this->db->bind("id_laporan", $id_laporan);
+        $pathFotoBarang = $this->db->single();
+        $pathFotoBarangString = $pathFotoBarang['photo_path'];
+
+        $lokasi_foto = "/Applications/XAMPP/xamppfiles/htdocs/ProTechLab-Sistem-Pelanggaran-Praktikan/public/img/uploads/" . basename($pathFotoBarangString);
+        unlink($lokasi_foto);
+
         $query = "DELETE FROM trx_laporan WHERE id_laporan = :id_laporan";
         $this->db->query($query);
         $this->db->bind("id_laporan", $id_laporan);
@@ -271,9 +279,9 @@ class Laporan_model
 
     public function ubahLaporan($data)
     {
-           
-            
-            $query = "UPDATE trx_laporan SET 
+
+
+        $query = "UPDATE trx_laporan SET 
                     semester = :semester,
                     nim = :nim,
                     id_frek = :id_frek,
@@ -284,20 +292,20 @@ class Laporan_model
                     id_status = :id_status,
                     photo_path = :photo_path
                     WHERE id_laporan = :id_laporan";
-            $photo_path = $this->uploadPhoto();
+        $photo_path = $this->uploadPhoto();
 
 
-            $this->db->query($query);
+        $this->db->query($query);
 
-            $this->db->bind(':semester', $data['semester']);
-            $this->db->bind(':nim', $data['nim']);
-            $this->db->bind(':id_frek', $data['id_frek']);
-            $this->db->bind(':tempat', $data['tempat']);
-            $this->db->bind(':deskripsi', $data['deskripsi']);
-            $this->db->bind(':tgl_laporan', $data['tgl_laporan']);
-            $this->db->bind(':id_user', $data['id_user']);
-            $this->db->bind(':id_status', $data['id_status']);
-            $this->db->bind('photo_path', $photo_path);
+        $this->db->bind(':semester', $data['semester']);
+        $this->db->bind(':nim', $data['nim']);
+        $this->db->bind(':id_frek', $data['id_frek']);
+        $this->db->bind(':tempat', $data['tempat']);
+        $this->db->bind(':deskripsi', $data['deskripsi']);
+        $this->db->bind(':tgl_laporan', $data['tgl_laporan']);
+        $this->db->bind(':id_user', $data['id_user']);
+        $this->db->bind(':id_status', $data['id_status']);
+        $this->db->bind('photo_path', $photo_path);
 
         $this->db->bind(':id_laporan', $data['id_laporan']);
         $this->db->execute();
@@ -305,7 +313,8 @@ class Laporan_model
         return $this->db->rowCount();
 
     }
-    private function getPhotoPathByID($userID) {
+    private function getPhotoPathByID($userID)
+    {
         $this->db->query("SELECT photo_path FROM trx_laporan WHERE id_laporan = :id_laporan");
         $this->db->bind(':id_laporan', $userID);
         $result = $this->db->single();
