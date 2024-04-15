@@ -119,39 +119,46 @@
                         <!-- Modal Detail -->
                         <div class="modal fade" id="detailModal<?= $lapor['id_laporan'] ?>" tabindex="-1"
                             aria-labelledby="detailModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="detailModalLabel">Detail Laporan</h5>
+                                        <h5 class="modal-title font-weight-bold" id="detailModalLabel">Detail Laporan</h5>
                                     </div>
                                     <div class="modal-body">
-                                        <p>NIM:
-                                            <?= $lapor['nim'] ?>
-                                        </p>
-                                        <p>Semester:
-                                            <?= $lapor['semester'] ?>
-                                        </p>
-                                        <p>Frekuensi:
-                                            <?= $lapor['nama_frek'] ?>
-                                        </p>
-                                        <p>Tempat:
-                                            <?= $lapor['tempat'] ?>
-                                        </p>
-                                        <p>Deskripsi:
-                                            <?= $lapor['deskripsi'] ?>
-                                        </p>
-                                        <p>Tanggal Pelaporan:
-                                            <?= $lapor['tgl_laporan'] ?>
-                                        </p>
-                                        <p>Pelapor:
-                                            <?= $lapor['username'] ?>
-                                        </p>
-                                        <p>Status:
-                                            <?= $lapor['nama_status'] ?>
-                                        </p>
-                                        <p>Foto: <img src="<?= BASEURL; ?>/<?= $lapor['photo_path'] ?>" alt="Foto"
-                                                style="max-width: 100px; max-height: 100px;"></p>
-                                        <!-- Tambahkan informasi detail lainnya sesuai kebutuhan -->
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="font-weight-normal">NIM:
+                                                        <?= $lapor['nim'] ?>
+                                                    </p>
+                                                    <p class="font-weight-normal">Semester:
+                                                        <?= $lapor['semester'] ?>
+                                                    </p>
+                                                    <p class="font-weight-normal">Frekuensi:
+                                                        <?= $lapor['nama_frek'] ?>
+                                                    </p>
+                                                    <p class="font-weight-normal">Tempat:
+                                                        <?= $lapor['tempat'] ?>
+                                                    </p>
+                                                    <p class="font-weight-normal">Deskripsi:
+                                                        <?= $lapor['deskripsi'] ?>
+                                                    </p>
+                                                    <p class="font-weight-normal">Tanggal Pelaporan:
+                                                        <?= $lapor['tgl_laporan'] ?>
+                                                    </p>
+                                                    <p class="font-weight-normal">Pelapor:
+                                                        <?= $lapor['username'] ?>
+                                                    </p>
+                                                    <p class="font-weight-normal">Status:
+                                                        <?= $lapor['nama_status'] ?>
+                                                    </p>
+                                                </div>
+                                                <div class="col-md-6 text-center">
+                                                    <img src="<?= BASEURL; ?>/<?= $lapor['photo_path'] ?>" alt="Foto"
+                                                        style="max-width: 100%; max-height: 100%;">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
